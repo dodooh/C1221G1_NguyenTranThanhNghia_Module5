@@ -45,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../thuc_hanh/typescript-is-prime" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
@@ -65,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654240899549</updated>
       <workItem from="1654240901064" duration="3618000" />
-      <workItem from="1654404611520" duration="231000" />
+      <workItem from="1654404611520" duration="332000" />
     </task>
     <servers />
   </component>
@@ -90,21 +90,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1537" height="237" key="GridCell.Tab.0.bottom" timestamp="1654404798650">
+    <state x="496" y="128" key="FileChooserDialogImpl" timestamp="1654404947838">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1654404798650" />
-    <state width="1537" height="237" key="GridCell.Tab.0.center" timestamp="1654404798650">
+    <state x="496" y="128" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1654404947838" />
+    <state width="1537" height="237" key="GridCell.Tab.0.bottom" timestamp="1654404949465">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1654404798650" />
-    <state width="1537" height="237" key="GridCell.Tab.0.left" timestamp="1654404798649">
+    <state width="1537" height="237" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1654404949465" />
+    <state width="1537" height="237" key="GridCell.Tab.0.center" timestamp="1654404949465">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1654404798649" />
-    <state width="1537" height="237" key="GridCell.Tab.0.right" timestamp="1654404798650">
+    <state width="1537" height="237" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1654404949465" />
+    <state width="1537" height="237" key="GridCell.Tab.0.left" timestamp="1654404949465">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1654404798650" />
+    <state width="1537" height="237" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1654404949465" />
+    <state width="1537" height="237" key="GridCell.Tab.0.right" timestamp="1654404949465">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1537" height="237" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1654404949465" />
   </component>
 </project>
