@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Facility - Edit</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="layout/layout.css">
+    <link rel="stylesheet" href="layout/dot-side.css">
+</head>
+<body id="body-pd" style="background-color: #e3dcd1; height:100%; margin-bottom: 60px;">
+<header class="header shadow" id="header">
+    <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+    <h3 class="display-5">Facilities</h3>
+    <div class="d-flex justify-content-between">
+        <div class="header_img mx-2">
+            <img src="/img/user.png" alt="">
+        </div>
+    </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div>
+            <a href="#" class="nav_logo">
+                <i class='bx bxl-foursquare nav_logo-icon'></i>
+                <span class="nav_logo-name">Furama <span style="color: 	#ffa31a">Resort</span></span>
+            </a>
+            <div class="nav_list">
+                <a href="/" class="nav_link">
+                    <i class='bx bx-grid-alt nav_icon'></i>
+                    <span class="nav_name">Dashboard</span>
+                </a>
+                <a href="/employee" class="nav_link">
+                    <i class='bx bxs-user nav_icon'></i>
+                    <span class="nav_name">Employee</span>
+                </a>
+                <a href="customer.html" class="nav_link ">
+                    <i class='bx bx-user nav_icon'></i>
+                    <span class="nav_name">Customer</span>
+                </a>
+                <a href="facilitiy.html" class="nav_link active">
+                    <i class='bx bxs-building-house nav_icon'></i>
+                    <span class="nav_name">Facility</span>
+                </a>
+                <a href="contract.html" class="nav_link">
+                    <i class='bx bx-notepad nav_icon'></i>
+                    <span class="nav_name">Contract</span>
+                </a>
+                <a href="/detail-contract" class="nav_link">
+                    <i class='bx bx-copy-alt nav_icon'></i>
+                    <span class="nav_name">Contract Detail</span>
+                </a>
+            </div>
+        </div>
+        <a class="nav_link">
+            <i class='bx bx-log-in nav_icon'></i>
+            <span class="nav_name">Sign In</span>
+        </a>
+    </nav>
+</div>
+<div class="height-100 px-5 py-3">
+    <div class="container">
+        <div class="text-center mb-3">
+            <h2>Update Facility</h2>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
+                <div class="row mb-3">
+                    <div class="col-7 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Name"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-5 form-group">
+                        <input style="width: 100%" class="form-control" type="text" placeholder="Area"
+                               autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4 form-group">
+                        <input style="width: 100%" class="form-control" type="text" placeholder="Cost"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-4 form-group">
+                        <input style="width: 100%" class="form-control" type="text" placeholder="Max People"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-4 form-group">
+                        <select class="form-control">
+                            <option value="">--Choose Rent Type--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12 form-group">
+                        <select id="facilityTypeSelect" class="form-control">
+                            <option value="">--Choose Service--</option>
+                            <option value="1">Villa</option>
+                            <option value="2">House</option>
+                            <option value="3">Room</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3" id="villaInputs">
+                    <div class="col-4 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Standard Room"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-4 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Other Convenient"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-2 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Pool Area"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-2 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Floors"
+                               autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="row mb-3" id="houseInputs">
+                    <div class="col-4 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Standard Room"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-4 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Other Convenient"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="col-2 form-group">
+                        <input style="width: 100%" class="form-control" type="text" placeholder="Floors"
+                               autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="row mb-3" id="roomInputs">
+                    <div class="col-12 form-group">
+                        <input style="width: 100%" type="text" class="form-control" placeholder="Free Service"
+                               autocomplete="off"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+<script src="layout/sidebar.js"></script>
+<script>
+    let $facilityTypeSelect = $('#facilityTypeSelect');
+    let $villaInputs = $('#villaInputs');
+    let $houseInputs = $('#houseInputs');
+    let $roomInputs = $('#roomInputs');
+    $(document).ready(function () {
+        hideAll();
+        $facilityTypeSelect.change(function () {
+            if (this.value == 1) {
+                $villaInputs.show();
+                $villaInputs.find('input').prop('disabled', false);
+                $houseInputs.hide();
+                $houseInputs.find('input').prop('disabled', true);
+                $roomInputs.hide();
+                $roomInputs.find('input').prop('disabled', true);
+            } else if (this.value == 2) {
+                $villaInputs.hide();
+                $villaInputs.find('input').prop('disabled', true);
+                $houseInputs.show();
+                $houseInputs.find('input').prop('disabled', false);
+                $roomInputs.hide();
+                $roomInputs.find('input').prop('disabled', true);
+            } else if (this.value == 3) {
+                $villaInputs.hide();
+                $villaInputs.find('input').prop('disabled', true);
+                $houseInputs.hide();
+                $houseInputs.find('input').prop('disabled', true);
+                $roomInputs.show();
+                $roomInputs.find('input').prop('disabled', false);
+            } else {
+                hideAll();
+            }
+        });
+    });
+    function hideAll() {
+        $villaInputs.hide();
+        $villaInputs.find('input').prop('disabled', true);
+        $houseInputs.hide();
+        $houseInputs.find('input').prop('disabled', true);
+        $roomInputs.hide();
+        $roomInputs.find('input').prop('disabled', true);
+    }
+</script>
+</body>
+</html>
