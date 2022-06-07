@@ -1,0 +1,87 @@
+<table class="table table-light table-bordered small">
+  <thead class="thead thead-dark text-center">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Contract Code</th>
+    <th scope="col">Customer Name</th>
+    <th scope="col">Employee</th>
+    <th scope="col">Service</th>
+    <th scope="col">Start Date</th>
+    <th scope="col">End Date</th>
+    <th scope="col">Deposit</th>
+    <th scope="col">Total Money</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contract of contracts, idx as index">
+    <td>{{index}}</td>
+    <td>{{contract.id}}</td>
+    <td>{{contract.customerName}}</td>
+    <td>{{contract.employeeName}}</td>
+    <td>{{contract.facilityName}}</td>
+    <td>{{contract.startDate}}</td>
+    <td>{{contract.endDate}}</td>
+    <td>{{contract.deposit}}</td>
+    <td>{{contract.totalMoney}}</td>
+    <td>
+      <a class="editSpan text-black">
+        <i class='bx bx-wrench bx-border bx-sm'></i>
+      </a>
+      <button type="button" class="border-0 bg-transparent deleteSpan"
+              data-toggle="modal" data-target="#deleteModal">
+        <i class='bx bx-trash bx-border bx-sm'></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="pagination-control">
+  <div class="row d-flex justify-content-center">
+    <nav aria-label="Page navigation example"
+         style="width: initial">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="btn btn-light">
+            Previous
+          </a>
+        </li>
+        <li class="page-item btn btn-light disabled">1</li>
+        <li class="page-item btn btn-light disabled">/</li>
+        <li class="page-item btn btn-light disabled">3</li>
+        <span>&nbsp;</span>
+        <li class="page-item">
+          <a class="btn btn-light">
+            Next
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Confirm Delete?</h5>
+        <button type="button" class="close text-light" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="id_delete" name="id">
+        <div id="name_delete"></div>
+        <div class="text-danger">WARNING: YOU CAN NOT ROLLBACK AFTER DELETE!!!</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">NO</button>
+        <button type="submit" class="btn btn-danger">YES</button>
+      </div>
+    </div>
+  </div>
+</div>

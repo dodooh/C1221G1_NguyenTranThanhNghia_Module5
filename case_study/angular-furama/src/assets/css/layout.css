@@ -44,14 +44,18 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  background-image: url("../../../../img/jungle.jpg");
+  background-image: url("../img/jungle.jpg");
+  background-color: rgba(41, 41, 41, 0.69);
+  background-blend-mode: saturation;
   background-size: cover;
   z-index: var(--z-fixed);
   transition: .5s
 }
 
 .header h3 {
-  color: var(--white-color);
+  color: var(--highlight-color);
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .header_toggle {

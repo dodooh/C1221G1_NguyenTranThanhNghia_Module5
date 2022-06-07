@@ -3,3 +3,8 @@
 @import "~boxicons/css/boxicons.css";
 @import "./assets/css/dot-side.css";
 @import "./assets/css/layout.css";
+
+
+body {
+  background-color: #FCEEB5;
+}

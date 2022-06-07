@@ -1,2 +1,7 @@
-<app-header></app-header>
+<app-header [title]="title"></app-header>
 <app-navigation-bar></app-navigation-bar>
+<div class="height-100 px-5 py-3">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

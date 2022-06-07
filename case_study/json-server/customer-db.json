@@ -1,0 +1,50 @@
+{
+  "customers": {
+    "customerList" : [
+      {
+        "id": "CS-0001",
+        "name": "Nguyen Van A",
+        "gender": "1",
+        "dayOfBirth": "1990-02-02",
+        "nationalId": "0987878987",
+        "address": "Da Nang",
+        "phone": "0123456789",
+        "email": "codegym2022@codegym.com",
+        "customerType": "Diamond"
+      },
+      {
+        "id": "CS-0002",
+        "name": "Nguyen Van B",
+        "gender": "1",
+        "dayOfBirth": "1990-02-02",
+        "nationalId": "0987878987",
+        "address": "Da Nang",
+        "phone": "0123456789",
+        "email": "codegym2022@codegym.com",
+        "customerType": "Diamond"
+      },
+      {
+        "id": "CS-0003",
+        "name": "Nguyen Van C",
+        "gender": "1",
+        "dayOfBirth": "1990-02-02",
+        "nationalId": "0987878987",
+        "address": "Da Nang",
+        "phone": "0123456789",
+        "email": "codegym2022@codegym.com",
+        "customerType": "Diamond"
+      },
+      {
+        "id": "CS-0004",
+        "name": "Nguyen Van D",
+        "gender": "1",
+        "dayOfBirth": "1990-02-02",
+        "nationalId": "0987878987",
+        "address": "Da Nang",
+        "phone": "0123456789",
+        "email": "codegym2022@codegym.com",
+        "customerType": "Diamond"
+      }
+    ]
+  }
+}
