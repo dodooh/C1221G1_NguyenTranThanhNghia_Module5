@@ -4,6 +4,7 @@ let rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
 let arr: number[] = [];
 let start: number = 0;
 let end: number = 1;
@@ -16,7 +17,7 @@ rl.question('Enter number: ', (num: any) => {
     rl.close();
 })
 
-let fibo = (total: number, count: number): void => {
+function fibo(total: number, count: number): void {
     if (count < total) {
         if (count <= 1) {
             arr.push(count)

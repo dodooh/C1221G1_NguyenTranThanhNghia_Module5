@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ShareService} from '../share.service';
-import {contracts} from '../../contracts';
+import {ShareService} from '../../share.service';
+import {contracts} from '../../../contracts';
+import {CustomerService} from '../../customer.service';
 
 @Component({
   selector: 'app-contract-list',
@@ -9,9 +10,9 @@ import {contracts} from '../../contracts';
 })
 export class ContractListComponent implements OnInit {
 
-  contracts = contracts;
+  contracts = contracts
 
-  constructor(private shareService: ShareService ) { }
+  constructor(private shareService: ShareService) { }
 
   ngOnInit(): void {
     this.shareService.emitChange('Contract');

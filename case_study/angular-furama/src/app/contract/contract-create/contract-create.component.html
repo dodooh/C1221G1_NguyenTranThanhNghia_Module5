@@ -1,0 +1,63 @@
+<div class="mb-2">
+  <a class="btn btn-secondary"
+     [routerLink]="['/contract']"
+     role="button">
+    <
+    <span>Back to List</span>
+  </a>
+</div>
+
+<div class="form-group row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-9">
+    <h2>Create New Contract</h2>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-right" for="customerName">Customer</label>
+  <div class="col-sm-3">
+    <select class="custom-select" id="customerName">
+      <option value="">Choose Customer</option>
+      <option value="CS-0001">Nguyen Van A</option>
+      <option value="CS-0002">Nguyen Van B</option>
+      <option value="CS-0003">Nguyen Van C</option>
+      <option value="CS-0004">Nguyen Van D</option>
+    </select>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-right" for="facility">Facility</label>
+  <div class="col-sm-3">
+    <select class="custom-select" id="facility">
+      <option value="">Choose Facility</option>
+      <option value="CS-0001">House Vip 1</option>
+      <option value="CS-0002">House Vip 2</option>
+      <option value="CS-0003">House Vip 3</option>
+      <option value="CS-0004">Villa Vip 1</option>
+    </select>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-right" for="startDate">Start Date</label>
+  <div class="col-sm-3">
+    <input type="date" id="startDate" class="form-control">
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-right" for="endDate">End Date</label>
+  <div class="col-sm-3">
+    <input type="date" id="endDate" class="form-control">
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-right" for="deposit">Deposit</label>
+  <div class="col-sm-3">
+    <input type="text" id="deposit" class="form-control">
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-right"></label>
+  <div class="col-sm-3">
+    <button type="button" class="btn btn-success">Submit</button>
+  </div>
+</div>

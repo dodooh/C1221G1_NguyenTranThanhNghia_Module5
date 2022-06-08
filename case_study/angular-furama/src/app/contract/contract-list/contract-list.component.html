@@ -1,3 +1,12 @@
+<div class="mb-2">
+  <a class="btn btn-success"
+     [routerLink]="['/contract/create']"
+     role="button">
+    +
+    <span>Contract</span>
+  </a>
+</div>
+
 <table class="table table-light table-bordered small">
   <thead class="thead thead-dark text-center">
   <tr>
@@ -9,8 +18,6 @@
     <th scope="col">Start Date</th>
     <th scope="col">End Date</th>
     <th scope="col">Deposit</th>
-    <th scope="col">Total Money</th>
-    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
@@ -23,16 +30,6 @@
     <td>{{contract.startDate}}</td>
     <td>{{contract.endDate}}</td>
     <td>{{contract.deposit}}</td>
-    <td>{{contract.totalMoney}}</td>
-    <td>
-      <a class="editSpan text-black">
-        <i class='bx bx-wrench bx-border bx-sm'></i>
-      </a>
-      <button type="button" class="border-0 bg-transparent deleteSpan"
-              data-toggle="modal" data-target="#deleteModal">
-        <i class='bx bx-trash bx-border bx-sm'></i>
-      </button>
-    </td>
   </tr>
   </tbody>
 </table>
@@ -61,27 +58,3 @@
   </div>
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Confirm Delete?</h5>
-        <button type="button" class="close text-light" data-dismiss="modal"
-                aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="id_delete" name="id">
-        <div id="name_delete"></div>
-        <div class="text-danger">WARNING: YOU CAN NOT ROLLBACK AFTER DELETE!!!</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-                data-dismiss="modal">NO</button>
-        <button type="submit" class="btn btn-danger">YES</button>
-      </div>
-    </div>
-  </div>
-</div>

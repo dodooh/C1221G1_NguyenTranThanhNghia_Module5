@@ -15,12 +15,12 @@
         <th scope="col">C_Code</th>
         <th scope="col">Name</th>
         <th scope="col">Gender</th>
-        <th scope="col">DOB</th>
         <th scope="col">National Id</th>
-        <th scope="col">Address</th>
+        <th scope="col">DOB</th>
         <th scope="col">Phone</th>
+        <th scope="col">Address</th>
         <th scope="col">Email</th>
-        <th scope="col">Customer Type</th>
+<!--        <th scope="col">Customer Type</th>-->
         <th scope="col"></th>
       </tr>
       </thead>
@@ -29,13 +29,14 @@
         <td>{{ index }}</td>
         <td>{{ customer.id }}</td>
         <td>{{ customer.name }}</td>
-        <td>{{ customer.gender }}</td>
+        <td *ngIf="customer.gender == 1; else femaleTd">Male</td>
+        <ng-template #femaleTd><td>Female</td></ng-template>
         <td>{{ customer.nationalId }}</td>
-        <td>{{ customer.dayOfBirth }}</td>
+        <td>{{ customer.dayOfBirth | date: 'dd/MM/yyyy'}}</td>
         <td>{{ customer.phone }}</td>
         <td>{{ customer.address }}</td>
-        <td>{{ customer.email }}</td>
-        <td>{{ customer.customerType }}</td>
+        <td>{{ customer.mail }}</td>
+<!--        <td>{{ customer.customerType }}</td>-->
         <td>
           <a class="editSpan text-black" [routerLink]="['/customer/update',customer.id]">
             <i class='bx bx-wrench bx-border bx-sm'></i>

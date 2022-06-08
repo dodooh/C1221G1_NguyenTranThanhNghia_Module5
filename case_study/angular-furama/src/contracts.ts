@@ -6,7 +6,7 @@ export interface Contract {
   startDate: string;
   endDate: string;
   deposit: number;
-  totalMoney: number;
+  totalMoney?: number;
 }
 
 export const contracts = [

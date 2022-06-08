@@ -1,13 +1,13 @@
 export interface Customer {
   id: string;
   name: string;
-  gender: boolean;
   dayOfBirth: string;
+  gender: boolean;
   nationalId: string;
-  address: string;
   phone: string;
-  email: string;
-  customerType: string;
+  address: string;
+  mail: string;
+  // customerType: string;
 }
 
 export const customers = [
@@ -19,7 +19,18 @@ export const customers = [
     nationalId: '0987878987',
     address: 'Da Nang',
     phone: '0123456789',
-    email: 'codegym2022@codegym.com',
+    mail: 'codegym2022@codegym.com',
+    customerType: 'Diamond'
+  },
+  {
+    id: 'CS-0001',
+    name: 'Nguyen Van A',
+    gender: '0',
+    dayOfBirth: '1990-02-02',
+    nationalId: '0987878987',
+    address: 'Da Nang',
+    phone: '0123456789',
+    mail: 'codegym2022@codegym.com',
     customerType: 'Diamond'
   },
   {
@@ -30,29 +41,18 @@ export const customers = [
     nationalId: '0987878987',
     address: 'Da Nang',
     phone: '0123456789',
-    email: 'codegym2022@codegym.com',
+    mail: 'codegym2022@codegym.com',
     customerType: 'Diamond'
   },
   {
     id: 'CS-0001',
     name: 'Nguyen Van A',
-    gender: '1',
+    gender: '0',
     dayOfBirth: '1990-02-02',
     nationalId: '0987878987',
     address: 'Da Nang',
     phone: '0123456789',
-    email: 'codegym2022@codegym.com',
-    customerType: 'Diamond'
-  },
-  {
-    id: 'CS-0001',
-    name: 'Nguyen Van A',
-    gender: '1',
-    dayOfBirth: '1990-02-02',
-    nationalId: '0987878987',
-    address: 'Da Nang',
-    phone: '0123456789',
-    email: 'codegym2022@codegym.com',
+    mail: 'codegym2022@codegym.com',
     customerType: 'Diamond'
   },
 ];
