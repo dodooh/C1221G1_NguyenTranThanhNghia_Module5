@@ -1,78 +1,78 @@
-  <div class="mb-2">
-    <a class="btn btn-success"
-       [routerLink]="['/customer/create']"
-       role="button">
-      +
-      <span>Customer</span>
-    </a>
-  </div>
+<div class="mb-2">
+  <a class="btn btn-success"
+     [routerLink]="['/customer/create']"
+     role="button">
+    +
+    <span>Customer</span>
+  </a>
+</div>
 
-  <div class="container-fluid p-0">
-    <table class="table table-light table-bordered small">
-      <thead class="thead thead-dark text-center">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">C_Code</th>
-        <th scope="col">Name</th>
-        <th scope="col">Gender</th>
-        <th scope="col">National Id</th>
-        <th scope="col">DOB</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Address</th>
-        <th scope="col">Email</th>
-<!--        <th scope="col">Customer Type</th>-->
-        <th scope="col"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let customer of customers, index as idx">
-        <td>{{ idx }}</td>
-        <td>{{ customer.id }}</td>
-        <td>{{ customer.name }}</td>
-        <td *ngIf="customer.gender == 1; else femaleTd">Male</td>
-        <ng-template #femaleTd><td>Female</td></ng-template>
-        <td>{{ customer.nationalId }}</td>
-        <td>{{ customer.dayOfBirth | date: 'dd/MM/yyyy'}}</td>
-        <td>{{ customer.phone }}</td>
-        <td>{{ customer.address }}</td>
-        <td>{{ customer.mail }}</td>
-<!--        <td>{{ customer.customerType }}</td>-->
-        <td>
-          <a class="btn btn-outline-warning mx-1" [routerLink]="['/customer/update',customer.id]">
-            <i class='bx bx-cog bx-sx'></i>
+<table class="table table-light table-bordered small">
+  <thead class="thead thead-dark text-center">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Gender</th>
+    <th scope="col">National Id</th>
+    <th scope="col">DOB</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Address</th>
+    <th scope="col">Email</th>
+    <th scope="col">Customer Type</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customers, index as idx">
+    <td>{{ idx + 1 }}</td>
+    <td>{{ customer.id }}</td>
+    <td>{{ customer.name }}</td>
+    <td *ngIf="customer.gender == 1; else femaleTd">Male</td>
+    <ng-template #femaleTd>
+      <td>Female</td>
+    </ng-template>
+    <td>{{ customer.nationalId }}</td>
+    <td>{{ customer.dayOfBirth | date: 'dd/MM/yyyy'}}</td>
+    <td>{{ customer.phone }}</td>
+    <td>{{ customer.address }}</td>
+    <td>{{ customer.mail }}</td>
+    <td>{{ customer.customerType.name }}</td>
+    <td>
+      <a class="btn btn-outline-warning mx-1" [routerLink]="['/customer/update',customer.id]">
+        <i class='bx bx-cog bx-sx'></i>
+      </a>
+      <button type="button" class="btn btn-outline-danger"
+              data-toggle="modal" data-target="#deleteModal">
+        <i class='bx bx-trash bx-sx'></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="pagination-control">
+  <div class="row d-flex justify-content-center">
+    <nav aria-label="Page navigation example"
+         style="width: initial">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="btn btn-light">
+            Previous
           </a>
-          <button type="button" class="btn btn-outline-danger"
-                  data-toggle="modal" data-target="#deleteModal">
-            <i class='bx bx-trash bx-sx'></i>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="pagination-control">
-      <div class="row d-flex justify-content-center">
-        <nav aria-label="Page navigation example"
-             style="width: initial">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="btn btn-light">
-                Previous
-              </a>
-            </li>
-            <li class="page-item btn btn-light disabled">1</li>
-            <li class="page-item btn btn-light disabled">/</li>
-            <li class="page-item btn btn-light disabled">3</li>
-            <span>&nbsp;</span>
-            <li class="page-item">
-              <a class="btn btn-light">
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+        </li>
+        <li class="page-item btn btn-light disabled">1</li>
+        <li class="page-item btn btn-light disabled">/</li>
+        <li class="page-item btn btn-light disabled">3</li>
+        <span>&nbsp;</span>
+        <li class="page-item">
+          <a class="btn btn-light">
+            Next
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
+</div>
 
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
@@ -86,16 +86,17 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <div class="modal-body">
-          <input type="hidden" id="id_delete" name="id">
-          <div id="name_delete"></div>
-          <div class="text-danger">WARNING: YOU CAN NOT ROLLBACK AFTER DELETE!!!</div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary"
-                  data-dismiss="modal">NO</button>
-          <button type="submit" class="btn btn-danger">YES</button>
-        </div>
+      <div class="modal-body">
+        <input type="hidden" id="id_delete" name="id">
+        <div id="name_delete"></div>
+        <div class="text-danger">WARNING: YOU CAN NOT ROLLBACK AFTER DELETE!!!</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">NO
+        </button>
+        <button type="submit" class="btn btn-danger">YES</button>
+      </div>
     </div>
   </div>
 </div>

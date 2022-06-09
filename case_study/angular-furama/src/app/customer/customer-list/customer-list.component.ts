@@ -1,5 +1,6 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
-import {Customer, customers} from '../../../customers';
+import {Customer} from '../../../Customer';
+import {customers} from '../../../assets/data/customerList';
 import {ShareService} from '../../share.service';
 import {CustomerService} from '../../customer.service';
 
@@ -16,7 +17,7 @@ export class CustomerListComponent implements OnInit  {
 
   ngOnInit(): void {
     this.shareService.emitChange('Customer');
-    this.listCustomer();
+    this.findAll();
   }
   // Get from API
   // listCustomer() {
@@ -25,7 +26,7 @@ export class CustomerListComponent implements OnInit  {
   //   });
   // }
 
-  listCustomer() {
-    this.customers = customers;
+  findAll() {
+    this.customers = this.customerService.getCustomerListByObjectTS();
   }
 }

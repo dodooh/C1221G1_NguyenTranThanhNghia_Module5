@@ -10,83 +10,169 @@
 <div class="text-center mb-3">
   <h2>Create New Facility</h2>
 </div>
-<div class="row d-flex justify-content-center">
-  <div class="col-8">
-    <div class="row mb-3">
-      <div class="col-7 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Name"
-               autocomplete="off"/>
-      </div>
-      <div class="col-5 form-group">
-        <input style="width: 100%" class="form-control" type="text" placeholder="Area"
-               autocomplete="off"/>
-      </div>
+<form [formGroup]="facilityForm" (ngSubmit)="onSubmit(facilityForm)">
+  <!--  {{ facilityForm.value | json }}-->
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="id">ID</label>
+    <div class="col-sm-3">
+      <input type="text" id="id" class="form-control"
+             formControlName="id" placeholder="KH-1234">
     </div>
-    <div class="row mb-3">
-      <div class="col-4 form-group">
-        <input style="width: 100%" class="form-control" type="text" placeholder="Cost"
-               autocomplete="off"/>
+    <div class="text-small text-danger"
+         *ngIf="
+      !facilityForm.controls.id?.valid
+      && (facilityForm.controls.id?.dirty ||facilityForm.controls.id?.touched)">
+      <div [hidden]="!facilityForm.controls.id.errors.required">
+        ID must be required
       </div>
-      <div class="col-4 form-group">
-        <input style="width: 100%" class="form-control" type="text" placeholder="Max People"
-               autocomplete="off"/>
-      </div>
-      <div class="col-4 form-group">
-        <select class="form-control">
-          <option value="">--Choose Rent Type--</option>
-        </select>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12 form-group">
-        <select id="facilityTypeSelect" class="form-control">
-          <option value="">--Choose Service--</option>
-          <option value="1">Villa</option>
-          <option value="2">House</option>
-          <option value="3">Room</option>
-        </select>
-      </div>
-    </div>
-    <div class="row mb-3" id="villaInputs">
-      <div class="col-4 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Standard Room"
-               autocomplete="off"/>
-      </div>
-      <div class="col-4 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Other Convenient"
-               autocomplete="off"/>
-      </div>
-      <div class="col-2 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Pool Area"
-               autocomplete="off"/>
-      </div>
-      <div class="col-2 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Floors"
-               autocomplete="off"/>
-      </div>
-    </div>
-    <div class="row mb-3" id="houseInputs">
-      <div class="col-4 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Standard Room"
-               autocomplete="off"/>
-      </div>
-      <div class="col-4 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Other Convenient"
-               autocomplete="off"/>
-      </div>
-      <div class="col-2 form-group">
-        <input style="width: 100%" class="form-control" type="text" placeholder="Floors"
-               autocomplete="off"/>
-      </div>
-    </div>
-    <div class="row mb-3" id="roomInputs">
-      <div class="col-12 form-group">
-        <input style="width: 100%" type="text" class="form-control" placeholder="Free Service"
-               autocomplete="off"/>
+      <div [hidden]="!facilityForm.controls.id.errors.pattern">
+        ID pattern fail (KH-XXXX)
       </div>
     </div>
   </div>
-</div>
-<div class="text-center">
-  <button type="submit" class="btn btn-success">Submit</button>
-</div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="name">Customer Name</label>
+    <div class="col-sm-6">
+      <input type="text" id="name" class="form-control"
+             formControlName="name" placeholder="Ex: Nguyen Van A">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+      !facilityForm.controls.name?.valid
+      && (facilityForm.controls.name?.dirty ||facilityForm.controls.name?.touched)">
+      <div [hidden]="!facilityForm.controls.name.errors.required">
+        Name must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right">Gender</label>
+    <div class="col-sm-1">
+      <div class="form-check">
+        <input formControlName="gender" class="form-check-input" type="radio" id="MaleRadio" value="1">
+        <label class="form-check-label" for="MaleRadio">Male</label>
+      </div>
+      <div class="form-check">
+        <input formControlName="gender" class="form-check-input" type="radio" id="FemaleRadio" value="0">
+        <label class="form-check-label" for="FemaleRadio">Female</label>
+      </div>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !facilityForm.controls.gender?.valid
+                && (facilityForm.controls.gender?.dirty ||facilityForm.controls.gender?.touched)">
+      <div [hidden]="!facilityForm.controls.gender.errors.required">
+        Gender must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="dayOfBirth">Day Of Birth</label>
+    <div class="col-sm-3">
+      <input formControlName="dayOfBirth" type="date" id="dayOfBirth" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !facilityForm.controls.dayOfBirth?.valid
+                && (facilityForm.controls.dayOfBirth?.dirty ||facilityForm.controls.dayOfBirth?.touched)">
+      <div [hidden]="!facilityForm.controls.dayOfBirth.errors.required">
+        Day Of Birth must be required
+      </div>
+      <div [hidden]="!facilityForm.controls.dayOfBirth.errors.pattern">
+        Day Of Birth must exact pattern dd/MM/yyyy
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="nationalId">National ID</label>
+    <div class="col-sm-3">
+      <input formControlName="nationalId" type="text" id="nationalId" class="form-control"
+             placeholder="Ex: 123456789">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !facilityForm.controls.nationalId?.valid
+                && (facilityForm.controls.nationalId?.dirty ||facilityForm.controls.nationalId?.touched)">
+      <div [hidden]="!facilityForm.controls.nationalId.errors.required">
+        National ID must be required
+      </div>
+      <div [hidden]="!facilityForm.controls.nationalId.errors.pattern">
+        National ID must has 9 numbers
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="address">Address</label>
+    <div class="col-sm-6">
+      <input formControlName="address" type="text" id="address" class="form-control"
+             placeholder="Ex: 18 Nguyen Chi Thanh">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !facilityForm.controls.address?.valid
+                && (facilityForm.controls.address?.dirty ||facilityForm.controls.address?.touched)">
+      <div [hidden]="!facilityForm.controls.address.errors.required">
+        Address must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="phone">Phone</label>
+    <div class="col-sm-3">
+      <input formControlName="phone" type="text" id="phone" class="form-control"
+             placeholder="Ex: 0912345678">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !facilityForm.controls.phone?.valid
+                && (facilityForm.controls.phone?.dirty ||facilityForm.controls.phone?.touched)">
+      <div [hidden]="!facilityForm.controls.phone.errors.required">
+        Phone Number must be required
+      </div>
+      <div [hidden]="!facilityForm.controls.phone.errors.pattern">
+        Phone Number must be start with 090 | 091 | (+84)90 | (+84)91
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="email">Email</label>
+    <div class="col-sm-6">
+      <input formControlName="mail" type="text" id="email" class="form-control"
+             placeholder="Ex: codegym123@gmail.co">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !facilityForm.controls.mail?.valid
+                && (facilityForm.controls.mail?.dirty ||facilityForm.controls.mail?.touched)">
+      <div [hidden]="!facilityForm.controls.mail.errors.required">
+        Email must be required
+      </div>
+      <div [hidden]="!facilityForm.controls.mail.errors.email">
+        Email must right format
+      </div>
+    </div>
+  </div>
+  <div class="form-group row" formGroupName="customerType">
+    <label class="col-sm-3 col-form-label text-right" for="customerType">Customer Type</label>
+    <div class="col-sm-3">
+      <select formControlName="id" class="custom-select" id="customerType">
+        <option [ngValue]="ct.id" *ngFor="let ct of customerTypes">
+          {{ct.name}}
+        </option>
+      </select>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="!facilityForm.controls.customerType.controls.id?.valid
+                && (facilityForm.controls.customerType.controls.id?.dirty ||facilityForm.controls.customerType.controls.id?.touched)">
+      <div [hidden]="!facilityForm.controls.customerType.controls.id?.errors.required">
+        Customer Type must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right"></label>
+    <div class="col-sm-3">
+      <button type="submit" class="btn btn-success" [disabled]="!facilityForm.valid">Submit</button>
+    </div>
+  </div>
+</form>

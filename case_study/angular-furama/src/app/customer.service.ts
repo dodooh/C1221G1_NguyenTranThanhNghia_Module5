@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Customer, customers} from '../customers';
+import {Customer} from '../Customer';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {customers} from '../assets/data/customerList';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
+  customers = customers;
   private baseUrl = 'http://localhost:8080/api/customers';
 
   constructor(
@@ -20,6 +22,15 @@ export class CustomerService {
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response.data.customers.content));
   }
+
+  getCustomerListByObjectTS() {
+    return this.customers;
+  }
+
+  addCustomerToObjectTS(customer) {
+    this.customers.push(customer);
+  }
+
 }
 
 interface GetResponse {

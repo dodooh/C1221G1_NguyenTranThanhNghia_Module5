@@ -1,11 +1,3 @@
-export interface Facility {
-  id: number;
-  name: string;
-  roomSize: number;
-  img: string;
-}
-
-
 export const facilities = [
   {
     id: 1,

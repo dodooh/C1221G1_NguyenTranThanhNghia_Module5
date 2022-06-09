@@ -14,7 +14,7 @@ import {CustomerUpdateComponent} from './customer/customer-update/customer-updat
 import {FacilityCreateComponent} from './facility/facility-create/facility-create.component';
 import {FacilityUpdateComponent} from './facility/facility-update/facility-update.component';
 import {ContractCreateComponent} from './contract/contract-create/contract-create.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -48,6 +48,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

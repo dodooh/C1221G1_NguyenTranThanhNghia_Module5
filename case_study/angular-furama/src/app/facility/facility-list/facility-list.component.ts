@@ -1,6 +1,6 @@
 import {AfterContentInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {facilities} from '../../../facilities';
 import { ShareService} from '../../share.service';
+import {facilities} from '../../../assets/data/facilityList';
 
 @Component({
   selector: 'app-facility-list',
