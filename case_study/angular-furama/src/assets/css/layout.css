@@ -6,7 +6,7 @@
   --first-color: #1b1b1b;
   --first-color-light: #808080;
   --white-color: #F7F6FB;
-  --highlight-color: 	#ffa31a;
+  --highlight-color: #ffa31a;
   --body-font: 'Nunito', sans-serif;
   --normal-font-size: 1rem;
   --z-fixed: 100
@@ -56,6 +56,7 @@ a {
   color: var(--highlight-color);
   font-weight: bold;
   text-transform: uppercase;
+  /*text-shadow: 0 0 0.05em #fff, 0 0 0.3em #fec063, 0 0 0.7em #ffa82a !important;*/
 }
 
 .header_toggle {

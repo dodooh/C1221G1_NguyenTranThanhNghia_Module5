@@ -10,19 +10,18 @@ export class CalculatorComponent implements OnInit {
     currentNumber = '0';
     firstOperand = null;
     operator = null;
-    waitForSecondNumber = false;
+    waitForSecondOperand = false;
 
     constructor() {
     }
 
-    public getNumber(v: string) {
+    public addNumber(v: string) {
         console.log(v);
-        if (this.waitForSecondNumber) {
+        if (this.waitForSecondOperand) {
             this.currentNumber = v;
-            this.waitForSecondNumber = false;
+            this.waitForSecondOperand = false;
         } else {
             this.currentNumber === '0' ? this.currentNumber = v : this.currentNumber += v;
-
         }
     }
 
@@ -48,28 +47,22 @@ export class CalculatorComponent implements OnInit {
     }
 
     public getOperation(op: string) {
-        console.log(op);
-
         if (this.firstOperand === null) {
             this.firstOperand = Number(this.currentNumber);
-
         } else if (this.operator) {
             const result = this.doCalculation(this.operator, Number(this.currentNumber))
             this.currentNumber = String(result);
             this.firstOperand = result;
         }
         this.operator = op;
-        this.waitForSecondNumber = true;
-
-        console.log(this.firstOperand);
-
+        this.waitForSecondOperand = true;
     }
 
     public clear() {
         this.currentNumber = '0';
         this.firstOperand = null;
         this.operator = null;
-        this.waitForSecondNumber = false;
+        this.waitForSecondOperand = false;
     }
 
     ngOnInit() {

@@ -13,74 +13,77 @@
     <h2>Create New Customer</h2>
   </div>
 </div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right" for="name">Customer Name</label>
-  <div class="col-sm-6">
-    <input type="text" id="name" class="form-control"
-           placeholder="Ex: Nguyen Van A">
+<form #customerCreateForm="ngForm" (ngSubmit)="onSubmit(customerCreateForm)">
+  {{ customerCreateForm.value | json }}
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="name">Customer Name</label>
+    <div class="col-sm-6">
+      <input type="text" id="name" class="form-control"
+            [(ngModel)]="customer.name" [ngModelOptions]="{standalone: true}" placeholder="Ex: Nguyen Van A">
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right">Gender</label>
-  <div class="col-sm-6">
-    <label class="col-form-label" for="MaleRadio">Male
-      <input type="radio" id="MaleRadio" value="1">
-    </label>
-    <label class="col-form-label" for="FemaleRadio">Female
-      <input type="radio" id="FemaleRadio" value="0">
-    </label>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right">Gender</label>
+    <div class="col-sm-6">
+      <label class="col-form-label" for="MaleRadio">Male
+        <input ngModel name="customer.gender" type="radio" id="MaleRadio" value="1">
+      </label>
+      <label class="col-form-label" for="FemaleRadio">Female
+        <input ngModel name="customer.gender" type="radio" id="FemaleRadio" value="0">
+      </label>
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right" for="dayOfBirth">Day Of Birth</label>
-  <div class="col-sm-3">
-    <input type="text" id="dayOfBirth" class="form-control"
-           placeholder="Format: 26/01/1997">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="dayOfBirth">Day Of Birth</label>
+    <div class="col-sm-3">
+      <input ngModel name="customer.dayOfBirth" type="text" id="dayOfBirth" class="form-control"
+             placeholder="Format: 26/01/1997">
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right" for="nationalId">National ID</label>
-  <div class="col-sm-3">
-    <input type="text" id="nationalId" class="form-control"
-           placeholder="Ex: 123456789">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="nationalId">National ID</label>
+    <div class="col-sm-3">
+      <input ngModel name="customer.nationalId" type="text" id="nationalId" class="form-control"
+             placeholder="Ex: 123456789">
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right" for="address">Address</label>
-  <div class="col-sm-6">
-    <input type="text" id="address" class="form-control"
-           placeholder="Ex: 18 Nguyen Chi Thanh">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="address">Address</label>
+    <div class="col-sm-6">
+      <input ngModel name="customer.address" type="text" id="address" class="form-control"
+             placeholder="Ex: 18 Nguyen Chi Thanh">
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right" for="phone">Phone</label>
-  <div class="col-sm-3">
-    <input type="text" id="phone" class="form-control"
-           placeholder="Ex: 0912345678">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="phone">Phone</label>
+    <div class="col-sm-3">
+      <input ngModel name="customer.phone" type="text" id="phone" class="form-control"
+             placeholder="Ex: 0912345678">
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right" for="email">Email</label>
-  <div class="col-sm-6">
-    <input type="text" id="email" class="form-control"
-           placeholder="Ex: codegym123@gmail.co">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="email">Email</label>
+    <div class="col-sm-6">
+      <input ngModel name="customer.mail" type="text" id="email" class="form-control"
+             placeholder="Ex: codegym123@gmail.co">
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right" for="customerType">Customer Type</label>
-  <div class="col-sm-3">
-    <select class="custom-select" id="customerType">
-      <option value="">Choose Customer Type</option>
-      <option value="1">Diamond</option>
-      <option value="2">Platinum</option>
-      <option value="3">Gold</option>
-      <option value="4">Silver</option>
-    </select>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="customerType">Customer Type</label>
+    <div class="col-sm-3">
+      <select ngModel name="customer.customerType" class="custom-select" id="customerType">
+        <option value="" selected>Choose Customer Type</option>
+        <option value="1">Diamond</option>
+        <option value="2">Platinum</option>
+        <option value="3">Gold</option>
+        <option value="4">Silver</option>
+      </select>
+    </div>
   </div>
-</div>
-<div class="form-group row">
-  <label class="col-sm-3 col-form-label text-right"></label>
-  <div class="col-sm-3">
-    <button type="button" class="btn btn-success">Submit</button>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right"></label>
+    <div class="col-sm-3">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
   </div>
-</div>
+</form>

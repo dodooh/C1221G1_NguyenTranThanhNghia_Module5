@@ -14,7 +14,7 @@ export class AppComponent implements AfterViewChecked {
   }
 
   ngAfterViewChecked()  {
-    console.log( 'shareService#changeEmitted' );
+    console.log( 'shareService#changeTitle' );
     this.shareService.changeEmitted$.subscribe(text => {
       this.title = text;
     });

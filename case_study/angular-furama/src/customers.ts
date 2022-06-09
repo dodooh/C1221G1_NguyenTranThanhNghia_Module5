@@ -1,4 +1,4 @@
-export interface Customer {
+export class Customer {
   id: string;
   name: string;
   dayOfBirth: string;
@@ -7,7 +7,10 @@ export interface Customer {
   phone: string;
   address: string;
   mail: string;
-  // customerType: string;
+  customerType: string;
+
+  constructor() {
+  }
 }
 
 export const customers = [
@@ -23,8 +26,8 @@ export const customers = [
     customerType: 'Diamond'
   },
   {
-    id: 'CS-0001',
-    name: 'Nguyen Van A',
+    id: 'CS-0002',
+    name: 'Nguyen Van B',
     gender: '0',
     dayOfBirth: '1990-02-02',
     nationalId: '0987878987',
@@ -34,8 +37,8 @@ export const customers = [
     customerType: 'Diamond'
   },
   {
-    id: 'CS-0001',
-    name: 'Nguyen Van A',
+    id: 'CS-0003',
+    name: 'Nguyen Van C',
     gender: '1',
     dayOfBirth: '1990-02-02',
     nationalId: '0987878987',
@@ -45,8 +48,8 @@ export const customers = [
     customerType: 'Diamond'
   },
   {
-    id: 'CS-0001',
-    name: 'Nguyen Van A',
+    id: 'CS-0004',
+    name: 'Nguyen Van D',
     gender: '0',
     dayOfBirth: '1990-02-02',
     nationalId: '0987878987',

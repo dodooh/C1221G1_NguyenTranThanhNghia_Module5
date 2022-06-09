@@ -20,8 +20,6 @@ export class CustomerService {
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response.data.customers.content));
   }
-
-
 }
 
 interface GetResponse {
