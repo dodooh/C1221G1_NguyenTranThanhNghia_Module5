@@ -1,0 +1,15 @@
+<h1>Rating bar</h1>
+
+<h3> {{currentRating}}</h3>
+
+<app-rating-bar (rateChange)="updateRating($event)" [current]="currentRating"></app-rating-bar>
+
+
+<hr>
+<hr>
+
+<h1>Count Down</h1>
+
+<app-count-down (countOnChange)="updateCount($event)"></app-count-down>
+
+<h3> {{count}}</h3>

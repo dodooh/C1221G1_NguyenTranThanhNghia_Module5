@@ -165,9 +165,9 @@
       </select>
     </div>
     <div class="text-small text-danger"
-         *ngIf="!customerForm.controls.customerType.controls.id?.valid
-                && (customerForm.controls.customerType.controls.id?.dirty ||customerForm.controls.customerType.controls.id?.touched)">
-      <div [hidden]="!customerForm.controls.customerType.controls.id?.errors.required">
+         *ngIf="!customerForm.controls.customerType['controls'].id?.valid
+                && (customerForm.controls.customerType['controls'].id?.dirty ||customerForm.controls.customerType['controls'].id?.touched)">
+      <div [hidden]="!customerForm.controls.customerType['controls'].id?.errors.required">
         Customer Type must be required
       </div>
     </div>

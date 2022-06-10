@@ -31,6 +31,10 @@ export class CustomerService {
     this.customers.push(customer);
   }
 
+  updateCustomerToObjectTs(customer) {
+    const indexToUpdate = this.customers.findIndex(item => item.id === customer.id);
+    this.customers[indexToUpdate] = customer;
+  }
 }
 
 interface GetResponse {

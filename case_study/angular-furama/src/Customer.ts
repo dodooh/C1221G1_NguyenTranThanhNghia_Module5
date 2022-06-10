@@ -4,7 +4,7 @@ export interface Customer {
   id: string;
   name: string;
   dayOfBirth: string;
-  gender: boolean;
+  gender: string;
   nationalId: string;
   phone: string;
   address: string;
