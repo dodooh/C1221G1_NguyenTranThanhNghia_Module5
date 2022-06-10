@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {facilityTypes} from '../../../assets/data/facilityTypeList';
 import {rentTypes} from '../../../assets/data/rentTypeList';
 import {FormControl, FormGroup} from "@angular/forms";
-import {FacilityType} from "../../../FacilityType";
-import {RentType} from "../../../RentType";
+import {FacilityType} from "../../model/facility-type";
+import {RentType} from "../../model/rent-type";
 
 @Component({
   selector: 'app-facility-create',

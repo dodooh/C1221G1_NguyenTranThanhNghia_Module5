@@ -1,5 +1,5 @@
-import {FacilityType} from './FacilityType';
-import {RentType} from './RentType';
+import {FacilityType} from './facility-type';
+import {RentType} from './rent-type';
 
 export interface Facility {
   id: number;

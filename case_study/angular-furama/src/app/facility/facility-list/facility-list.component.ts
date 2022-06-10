@@ -10,10 +10,13 @@ import {facilities} from '../../../assets/data/facilityList';
 export class FacilityListComponent implements OnInit {
 
   facilities = facilities;
+  nameFacilityToDelete: string;
   constructor(private shareService: ShareService ) { }
 
   ngOnInit(): void {
     this.shareService.emitChange('Facility');
   }
-
+  showMessage(name: any) {
+    this.nameFacilityToDelete = name;
+  }
 }

@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from '../../customer.service';
 import {customerTypes} from '../../../assets/data/customerTypeList';
-import {Customer} from '../../../Customer';
+import {Customer} from '../../model/customer';
 import {customers} from '../../../assets/data/customerList';
 
 @Component({

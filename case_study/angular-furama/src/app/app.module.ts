@@ -15,6 +15,7 @@ import {FacilityCreateComponent} from './facility/facility-create/facility-creat
 import {FacilityUpdateComponent} from './facility/facility-update/facility-update.component';
 import {ContractCreateComponent} from './contract/contract-create/contract-create.component';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -41,7 +42,8 @@ const routes: Routes = [
     CustomerUpdateComponent,
     FacilityCreateComponent,
     FacilityUpdateComponent,
-    ContractCreateComponent
+    ContractCreateComponent,
+    ModalDeleteComponent
   ],
   imports: [
     BrowserModule,

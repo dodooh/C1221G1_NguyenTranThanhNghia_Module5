@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Customer} from '../Customer';
+import {Customer} from './model/customer';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -34,6 +34,12 @@ export class CustomerService {
   updateCustomerToObjectTs(customer) {
     const indexToUpdate = this.customers.findIndex(item => item.id === customer.id);
     this.customers[indexToUpdate] = customer;
+  }
+
+  deleteCustomerToObjectTS(idToDelete: string) {
+    this.customers = this.customers.filter(item => item.id !== idToDelete);
+    console.log(customers);
+    console.log('finish delete');
   }
 }
 

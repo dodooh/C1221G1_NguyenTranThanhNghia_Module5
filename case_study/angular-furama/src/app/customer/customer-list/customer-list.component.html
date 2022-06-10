@@ -14,10 +14,10 @@
     <th scope="col">ID</th>
     <th scope="col">Name</th>
     <th scope="col">Gender</th>
-    <th scope="col">National Id</th>
-    <th scope="col">DOB</th>
+<!--    <th scope="col">National Id</th>-->
+<!--    <th scope="col">DOB</th>-->
     <th scope="col">Phone</th>
-    <th scope="col">Address</th>
+<!--    <th scope="col">Address</th>-->
     <th scope="col">Email</th>
     <th scope="col">Customer Type</th>
     <th scope="col"></th>
@@ -32,10 +32,10 @@
     <ng-template #femaleTd>
       <td>Female</td>
     </ng-template>
-    <td>{{ customer.nationalId }}</td>
-    <td>{{ customer.dayOfBirth | date: 'dd/MM/yyyy'}}</td>
+<!--    <td>{{ customer.nationalId }}</td>-->
+<!--    <td>{{ customer.dayOfBirth | date: 'dd/MM/yyyy'}}</td>-->
     <td>{{ customer.phone }}</td>
-    <td>{{ customer.address }}</td>
+<!--    <td>{{ customer.address }}</td>-->
     <td>{{ customer.mail }}</td>
     <td>{{ customer.customerType.name }}</td>
     <td>
@@ -43,7 +43,9 @@
         <i class='bx bx-cog bx-sx'></i>
       </a>
       <button type="button" class="btn btn-outline-danger"
-              data-toggle="modal" data-target="#deleteModal">
+              data-toggle="modal" data-target="#deleteModal"
+              (click)="showMessage(customer.name, customer.id)"
+      >
         <i class='bx bx-trash bx-sx'></i>
       </button>
     </td>
@@ -74,29 +76,4 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Confirm Delete?</h5>
-        <button type="button" class="close text-light" data-dismiss="modal"
-                aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="id_delete" name="id">
-        <div id="name_delete"></div>
-        <div class="text-danger">WARNING: YOU CAN NOT ROLLBACK AFTER DELETE!!!</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-                data-dismiss="modal">NO
-        </button>
-        <button type="submit" class="btn btn-danger">YES</button>
-      </div>
-    </div>
-  </div>
-</div>
+<app-modal-delete (confirmDelete)="deleteCustomer($event)" [messageDelete]="nameCustomerToDelete" [idDelete]="idCustomerToDelete"></app-modal-delete>
