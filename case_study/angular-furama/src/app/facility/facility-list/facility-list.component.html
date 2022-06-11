@@ -10,19 +10,30 @@
 <div class="row">
   <div class="col-4 mb-3" *ngFor="let facility of facilities">
     <div class="card" style="width: 22rem;">
+      <div class="badge badge-warning">${{facility.area}}</div>
       <img class="card-img-top" [src]="'../../assets/img/' + facility.img" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title text-uppercase font-weight-bold">{{ facility.name }}</h5>
 
         <div class="d-flex justify-content-between">
-          <p class="card-text">Room site <span>{{ facility.roomSize }} m<sup>2</sup></span></p>
+          <div>
+            <p class="card-text mb-0">Area <span>{{ facility.area }} m<sup>2</sup></span></p>
+            <p class="card-text mb-0">For {{facility.maxPeople}} people</p>
+
+          </div>
           <div class="dropout active">
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <button type="button" class="btn btn-outline-info"
+                        data-toggle="modal" data-target="#detailModal"
+                >
+                  <i class='bx bx-search-alt bx-sx'></i>
+                </button>
+              </li>
               <li class="nav-item">
                 <a class="btn btn-outline-warning" [routerLink]="['/facility/update', facility.id]">
                   <i class='bx bx-cog bx-sx'></i>
                 </a>
-
               </li>
               <li class="nav-item">
                 <button class="btn btn-outline-danger" data-toggle="modal"
@@ -33,7 +44,6 @@
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   </div>

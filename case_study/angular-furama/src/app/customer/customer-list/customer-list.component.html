@@ -39,12 +39,18 @@
     <td>{{ customer.mail }}</td>
     <td>{{ customer.customerType.name }}</td>
     <td>
+      <button type="button" class="btn btn-outline-info"
+              data-toggle="modal" data-target="#detailModal"
+              (click)="passCustomerToModal(customer)"
+      >
+        <i class='bx bx-search-alt bx-sx'></i>
+      </button>
       <a class="btn btn-outline-warning mx-1" [routerLink]="['/customer/update',customer.id]">
         <i class='bx bx-cog bx-sx'></i>
       </a>
       <button type="button" class="btn btn-outline-danger"
               data-toggle="modal" data-target="#deleteModal"
-              (click)="showMessage(customer.name, customer.id)"
+              (click)="showMessageDelete(customer.name, customer.id)"
       >
         <i class='bx bx-trash bx-sx'></i>
       </button>
@@ -77,3 +83,4 @@
 </div>
 
 <app-modal-delete (confirmDelete)="deleteCustomer($event)" [messageDelete]="nameCustomerToDelete" [idDelete]="idCustomerToDelete"></app-modal-delete>
+<app-modal-customer-detail [customer]="customerPassToModal"></app-modal-customer-detail>

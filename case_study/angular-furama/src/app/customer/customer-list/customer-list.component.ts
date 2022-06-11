@@ -16,7 +16,7 @@ export class CustomerListComponent implements OnInit  {
   customerTypes = customerTypes;
   nameCustomerToDelete: string;
   idCustomerToDelete: string;
-
+  customerPassToModal: Customer;
   constructor(private route: Router, private shareService: ShareService, private customerService: CustomerService  ) { }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class CustomerListComponent implements OnInit  {
     this.customers = this.customerService.getCustomerListByObjectTS();
   }
 
-  showMessage(name: string, id: string) {
+  showMessageDelete(name: string, id: string) {
     this.nameCustomerToDelete = name;
     this.idCustomerToDelete = id;
   }
@@ -47,4 +47,7 @@ export class CustomerListComponent implements OnInit  {
   }
 
 
+  passCustomerToModal(customer: any) {
+    this.customerPassToModal = customer;
+  }
 }

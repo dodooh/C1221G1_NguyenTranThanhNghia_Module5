@@ -14,8 +14,12 @@ import {CustomerUpdateComponent} from './customer/customer-update/customer-updat
 import {FacilityCreateComponent} from './facility/facility-create/facility-create.component';
 import {FacilityUpdateComponent} from './facility/facility-update/facility-update.component';
 import {ContractCreateComponent} from './contract/contract-create/contract-create.component';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ModalDeleteComponent} from './modal-delete/modal-delete.component';
+import {ModalCustomerDetailComponent} from './modal-customer-detail/modal-customer-detail.component';
+import {FacilityCreateVillaComponent} from './facility/facility-create/facility-create-villa/facility-create-villa.component';
+import {FacilityCreateRoomComponent} from './facility/facility-create/facility-create-room/facility-create-room.component';
+import {FacilityCreateHouseComponent} from './facility/facility-create/facility-create-house/facility-create-house.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,7 +27,14 @@ const routes: Routes = [
   {path: 'customer/create', component: CustomerCreateComponent},
   {path: 'customer', component: CustomerListComponent},
   {path: 'facility/update/:facilityId', component: FacilityUpdateComponent},
-  {path: 'facility/create', component: FacilityCreateComponent},
+  {
+    path: 'facility/create', component: FacilityCreateComponent, children: [
+      {path: '', pathMatch: 'full', redirectTo: 'villa'},
+      {path: 'villa', component: FacilityCreateVillaComponent},
+      {path: 'room', component: FacilityCreateRoomComponent},
+      {path: 'house', component: FacilityCreateHouseComponent},
+    ]
+  },
   {path: 'facility', component: FacilityListComponent},
   {path: 'contract/create', component: ContractCreateComponent},
   {path: 'contract', component: ContractListComponent},
@@ -43,17 +54,20 @@ const routes: Routes = [
     FacilityCreateComponent,
     FacilityUpdateComponent,
     ContractCreateComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    ModalCustomerDetailComponent,
+    FacilityCreateVillaComponent,
+    FacilityCreateRoomComponent
   ],
-  imports: [
+  imports     : [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers   : [],
+  bootstrap   : [AppComponent]
 })
 export class AppModule {
 }

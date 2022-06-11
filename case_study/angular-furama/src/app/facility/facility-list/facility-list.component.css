@@ -1,0 +1,14 @@
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  color: red;
+  line-height: 3rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transform: translateX(.5rem) translateY(-.5rem);
+  background: radial-gradient(ellipse farthest-corner at right bottom, #a3843f 0%, #b58a30 8%, #FDB931 30%, #FEDB37 40%, #FDB931 60%, #b58a30 100%);
+}
