@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Customer} from './model/customer';
+import {Customer} from '../model/customer';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {customers} from '../assets/data/customerList';
+import {customers} from '../../assets/data/customerList';
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +38,10 @@ export class CustomerService {
 
   deleteCustomerToObjectTS(idToDelete: string) {
     this.customers = this.customers.filter(item => item.id !== idToDelete);
-    console.log(customers);
-    console.log('finish delete');
+  }
+
+  findById(customerIdFromRoute: string) {
+    return this.customers.find(customer => customer.id == customerIdFromRoute);
   }
 }
 

@@ -1,0 +1,69 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img
+        style="width: 60px"
+        src="//james.codegym.vn/pluginfile.php/1/theme_remui/logomini/1637071366/icon-small.png"
+        id="icon"
+        alt="User Icon"
+      />
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="obSubmit()">
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        formControlName="username"
+        placeholder="login"
+      />
+      <div
+        class="text-small text-danger"
+        *ngIf="
+          !loginForm.controls.username?.valid &&
+          (loginForm.controls.username?.dirty ||
+            loginForm.controls.username?.touched)
+        "
+      >
+        <div [hidden]="!loginForm.controls.username.errors.required">
+          Email must be required
+        </div>
+        <div [hidden]="!loginForm.controls.username.errors.email">
+          Email wrong format
+        </div>
+      </div>
+      <input
+        type="text"
+        id="password"
+        class="fadeIn third"
+        formControlName="password"
+        placeholder="password"
+      />
+      <div
+        class="text-small text-danger"
+        *ngIf="
+          !loginForm.controls.password?.valid &&
+          (loginForm.controls.password?.dirty ||
+            loginForm.controls.password?.touched)
+        "
+      >
+        <div [hidden]="!loginForm.controls.password.errors.required">
+          Password must be required
+        </div>
+        <div [hidden]="!loginForm.controls.password.errors.minlength">
+          Password must be > 6 characters
+        </div>
+      </div>
+      <input type="submit" class="fadeIn fourth" value="Log In" />
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+  </div>
+</div>

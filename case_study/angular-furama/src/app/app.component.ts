@@ -1,5 +1,5 @@
 import {AfterContentChecked, AfterContentInit, AfterViewChecked, Component, OnInit} from '@angular/core';
-import {ShareService} from './share.service';
+import {ShareService} from './service/share.service';
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({

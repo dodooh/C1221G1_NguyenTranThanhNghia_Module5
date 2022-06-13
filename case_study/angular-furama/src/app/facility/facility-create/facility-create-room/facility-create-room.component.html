@@ -1,1 +1,131 @@
-<p>facility-create-room works!</p>
+<form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+<!--  {{ roomForm.value | json }}-->
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="id">ID</label>
+    <div class="col-sm-3">
+      <input type="text" id="id" class="form-control"
+             formControlName="id">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+      !roomForm.controls.id?.valid
+      && (roomForm.controls.id?.dirty ||roomForm.controls.id?.touched)">
+      <div [hidden]="!roomForm.controls.id.errors.required">
+        ID must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="name">Facility Name</label>
+    <div class="col-sm-6">
+      <input type="text" id="name" class="form-control"
+             formControlName="name">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+      !roomForm.controls.name?.valid
+      && (roomForm.controls.name?.dirty ||roomForm.controls.name?.touched)">
+      <div [hidden]="!roomForm.controls.name.errors.required">
+        Facility Name must be required
+      </div>
+      <div [hidden]="!roomForm.controls.name.errors.pattern">
+        Facility Name contains alphabet only
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="area">Area</label>
+    <div class="col-sm-3">
+      <input formControlName="area" type="number" min="1" id="area" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !roomForm.controls.area?.valid
+                && (roomForm.controls.area?.dirty ||roomForm.controls.area?.touched)">
+      <div [hidden]="!roomForm.controls.area.errors.required">
+        Area must be required
+      </div>
+      <div [hidden]="!roomForm.controls.area.errors.positive_number">
+        Area must be positive
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="cost">Cost</label>
+    <div class="col-sm-3">
+      <input formControlName="cost" type="number" id="cost" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !roomForm.controls.cost?.valid
+                && (roomForm.controls.cost?.dirty ||roomForm.controls.cost?.touched)">
+      <div [hidden]="!roomForm.controls.cost.errors.required">
+        Cost must be required
+      </div>
+      <div [hidden]="!roomForm.controls.cost.errors.positive_number">
+        Cost must be positive
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="maxPeople">Max People Allow</label>
+    <div class="col-sm-3">
+      <input formControlName="maxPeople" type="number" id="maxPeople" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !roomForm.controls.maxPeople?.valid
+                && (roomForm.controls.maxPeople?.dirty ||roomForm.controls.maxPeople?.touched)">
+      <div [hidden]="!roomForm.controls.maxPeople.errors.required">
+        Max People must be required
+      </div>
+      <div [hidden]="!roomForm.controls.maxPeople.errors.positive_number">
+        Max People must be positive
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="freeService">Free Service</label>
+    <div class="col-sm-6">
+      <input formControlName="freeService" type="text" id="freeService" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !roomForm.controls.freeService?.valid
+                && (roomForm.controls.freeService?.dirty ||roomForm.controls.freeService?.touched)">
+      <div [hidden]="!roomForm.controls.freeService.errors.required">
+        Free Service must be required
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row" >
+    <label class="col-sm-3 col-form-label text-right" for="rentType">Rent Type</label>
+    <div class="col-sm-3">
+      <select formControlName="rentType" class="custom-select" id="rentType">
+        <option [ngValue]="null">---Choose Rent Type---</option>
+        <option [ngValue]="rt" *ngFor="let rt of rentTypes">
+          {{rt.name}}
+        </option>
+      </select>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="!roomForm.controls.rentType?.valid
+                  && (roomForm.controls.rentType?.dirty ||roomForm.controls.rentType?.touched)">
+      <div [hidden]="!roomForm.controls.rentType?.errors.required">
+        Rent Type must be required
+      </div>
+    </div>
+  </div>
+
+  <div class="d-none">
+    <input type="hidden" formControlName="facilityType">
+  </div>
+  <input type="hidden" formControlName="img">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right"></label>
+    <div class="col-sm-3">
+      <button type="submit" class="btn btn-success" [disabled]="!roomForm.valid">Submit</button>
+    </div>
+  </div>
+</form>

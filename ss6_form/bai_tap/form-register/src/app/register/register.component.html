@@ -1,0 +1,187 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="input-field">
+    <label for=""
+      >Email
+      <input type="text" formControlName="email" />
+      <div
+        style="display: inline-block"
+        *ngIf="
+          !registerForm.controls.email?.valid &&
+          (registerForm.controls.email?.dirty ||
+            registerForm.controls.email?.touched)
+        "
+      >
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.email.errors.required"
+        >
+          Email must be required
+        </p>
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.email.errors.email"
+        >
+          Wrong Email Format
+        </p>
+      </div>
+    </label>
+  </div>
+  <div class="input-field">
+    <label for=""
+      >Password
+      <input type="password" formControlName="password" />
+      <div
+        style="display: inline-block"
+        *ngIf="
+          !registerForm.controls.password?.valid &&
+          (registerForm.controls.password?.dirty ||
+            registerForm.controls.password?.touched)
+        "
+      >
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.password.errors.required"
+        >
+          Password must be required
+        </p>
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.password.errors.minlength"
+        >
+          Password must be > 6 characters
+        </p>
+      </div>
+    </label>
+  </div>
+  <div class="input-field">
+    <label for=""
+      >Confirm Password
+      <input type="password" formControlName="confirmPassword" />
+      <div
+        style="display: inline-block"
+        *ngIf="
+          !registerForm.controls.confirmPassword?.valid &&
+          (registerForm.controls.confirmPassword?.dirty ||
+            registerForm.controls.confirmPassword?.touched)
+        "
+      >
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.confirmPassword.errors.required"
+        >
+          Confirm Password must be required
+        </p>
+      </div>
+      <p class="error-message" *ngIf="registerForm.errors?.notSame">
+        Confirm Password must be same as password
+      </p>
+    </label>
+  </div>
+  <div class="input-field">
+    <label for=""
+      >Country
+      <select formControlName="country">
+        <option [ngValue]="null">-- Choose Country --</option>
+        <option [ngValue]="'1'">Viet Nam</option>
+        <option [ngValue]="'2'">China</option>
+        <option [ngValue]="'3'">USA</option>
+      </select>
+      <div
+        style="display: inline-block"
+        *ngIf="
+          !registerForm.controls.country?.valid &&
+          (registerForm.controls.country?.dirty ||
+            registerForm.controls.country?.touched)
+        "
+      >
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.country.errors.required"
+        >
+          Contry must be required
+        </p>
+      </div>
+    </label>
+  </div>
+  <div class="input-field">
+    <label for=""
+      >Age
+      <input type="number" formControlName="age" />
+      <div
+        style="display: inline-block"
+        *ngIf="
+          !registerForm.controls.age?.valid &&
+          (registerForm.controls.age?.dirty ||
+            registerForm.controls.age?.touched)
+        "
+      >
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.age.errors.required"
+        >
+          Age must be required
+        </p>
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.age.errors.min"
+        >
+          Age must be > 18
+        </p>
+      </div>
+    </label>
+  </div>
+  <div class="input-field">
+    <label>Gender: </label>
+    <label for="maleRd">
+      Male
+      <input id="maleRd" type="radio" formControlName="gender" value="1" />
+    </label>
+    <label for="femaleRd">
+      Female
+      <input id="femaleRd" type="radio" formControlName="gender" value="0" />
+    </label>
+    <div
+      style="display: inline-block"
+      *ngIf="
+        !registerForm.controls.gender?.valid &&
+        (registerForm.controls.gender?.dirty ||
+          registerForm.controls.gender?.touched)
+      "
+    >
+      <p
+        class="error-message"
+        [hidden]="!registerForm.controls.gender.errors.required"
+      >
+        Gender must be required
+      </p>
+    </div>
+  </div>
+  <div class="input-field">
+    <label for=""
+      >Phone
+      <input type="text" formControlName="phone" />
+      <div
+        style="display: inline-block"
+        *ngIf="
+          !registerForm.controls.phone?.valid &&
+          (registerForm.controls.phone?.dirty ||
+            registerForm.controls.phone?.touched)
+        "
+      >
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.phone.errors.required"
+        >
+          Phone must be required
+        </p>
+        <p
+          class="error-message"
+          [hidden]="!registerForm.controls.phone.errors.pattern"
+        >
+          Phone must be in pattern +84xxxxxxxxx
+        </p>
+      </div>
+    </label>
+  </div>
+  <button type="submit">Register</button>
+</form>

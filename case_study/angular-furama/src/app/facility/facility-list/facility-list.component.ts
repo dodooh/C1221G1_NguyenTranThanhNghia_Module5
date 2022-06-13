@@ -1,6 +1,8 @@
 import {AfterContentInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { ShareService} from '../../share.service';
+import { ShareService} from '../../service/share.service';
 import {facilities} from '../../../assets/data/facilityList';
+import {Facility} from "../../model/facility";
+import {FacilityService} from "../../service/facility.service";
 
 @Component({
   selector: 'app-facility-list',
@@ -9,9 +11,11 @@ import {facilities} from '../../../assets/data/facilityList';
 })
 export class FacilityListComponent implements OnInit {
 
-  facilities = facilities;
+  facilities: Facility[];
   nameFacilityToDelete: string;
-  constructor(private shareService: ShareService ) { }
+  constructor(private facilityService: FacilityService, private shareService: ShareService ) {
+    this.facilities = facilityService.findAll();
+  }
 
   ngOnInit(): void {
     this.shareService.emitChange('Facility');

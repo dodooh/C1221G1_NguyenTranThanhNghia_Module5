@@ -1,6 +1,12 @@
-<p>facility create villa works</p>
+<div [hidden]="!isLoading" class="progress-bar-container" [style.backgroundColor]="backgroundColor">
+  <div class="progress" [ngStyle]="{
+  backgroundColor: progressColor,
+  width: progress + '%'
+  }"></div>
+</div>
+
 <form [formGroup]="villaForm" (ngSubmit)="onSubmit()">
-  <!--  {{ villaForm.value | json }}-->
+    {{ villaForm.value | json }}
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="id">ID</label>
     <div class="col-sm-3">
@@ -28,6 +34,9 @@
       && (villaForm.controls.name?.dirty ||villaForm.controls.name?.touched)">
       <div [hidden]="!villaForm.controls.name.errors.required">
         Facility Name must be required
+      </div>
+      <div [hidden]="!villaForm.controls.name.errors.pattern">
+        Facility Name contains alphabet only
       </div>
     </div>
   </div>
@@ -60,6 +69,9 @@
       <div [hidden]="!villaForm.controls.cost.errors.required">
         Cost must be required
       </div>
+      <div [hidden]="!villaForm.controls.cost.errors.positive_number">
+        Cost must be positive
+      </div>
     </div>
   </div>
   <div class="form-group row">
@@ -74,6 +86,9 @@
       <div [hidden]="!villaForm.controls.maxPeople.errors.required">
         Max People must be required
       </div>
+      <div [hidden]="!villaForm.controls.maxPeople.errors.positive_number">
+        Max People must be positive
+      </div>
     </div>
   </div>
   <div class="form-group row">
@@ -87,6 +102,9 @@
                 && (villaForm.controls.floor?.dirty ||villaForm.controls.floor?.touched)">
       <div [hidden]="!villaForm.controls.floor.errors.required">
         Floor must be required
+      </div>
+      <div [hidden]="!villaForm.controls.floor.errors.positive_number">
+        Floor must be positive
       </div>
     </div>
   </div>
@@ -116,6 +134,9 @@
       <div [hidden]="!villaForm.controls.poolArea.errors.required">
         Pool Area must be required
       </div>
+      <div [hidden]="!villaForm.controls.poolArea.errors.positive_number">
+        Pool Area must be positive
+      </div>
     </div>
   </div>
   <div class="form-group row">
@@ -133,26 +154,27 @@
     </div>
   </div>
 
-  <div class="form-group row" formGroupName="rentType">
+  <div class="form-group row" >
     <label class="col-sm-3 col-form-label text-right" for="rentType">Rent Type</label>
     <div class="col-sm-3">
-      <select formControlName="id" class="custom-select" id="rentType">
-        <option [ngValue]="rt.id" *ngFor="let rt of rentTypes">
+      <select formControlName="rentType" class="custom-select" id="rentType">
+        <option [ngValue]="null">---Choose Rent Type---</option>
+        <option [ngValue]="rt" *ngFor="let rt of rentTypes">
           {{rt.name}}
         </option>
       </select>
     </div>
     <div class="text-small text-danger"
-         *ngIf="!villaForm.controls.rentType['controls'].id?.valid
-                  && (villaForm.controls.rentType['controls'].id?.dirty ||villaForm.controls.rentType['controls'].id?.touched)">
-      <div [hidden]="!villaForm.controls.rentType['controls'].id?.errors.required">
+         *ngIf="!villaForm.controls.rentType?.valid
+                  && (villaForm.controls.rentType?.dirty ||villaForm.controls.rentType?.touched)">
+      <div [hidden]="!villaForm.controls.rentType?.errors.required">
         Rent Type must be required
       </div>
     </div>
   </div>
 
-  <div class="d-none" formGroupName="facilityType">
-    <input type="hidden" formControlName="id">
+  <div class="d-none">
+    <input type="hidden" formControlName="facilityType">
   </div>
   <input type="hidden" formControlName="img">
   <div class="form-group row">

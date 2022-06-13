@@ -1,8 +1,8 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {Customer} from '../../model/customer';
 import {customers} from '../../../assets/data/customerList';
-import {ShareService} from '../../share.service';
-import {CustomerService} from '../../customer.service';
+import {ShareService} from '../../service/share.service';
+import {CustomerService} from '../../service/customer.service';
 import {customerTypes} from '../../../assets/data/customerTypeList';
 import {Router} from '@angular/router';
 @Component({

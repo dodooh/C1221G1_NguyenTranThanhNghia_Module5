@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, NgForm, NgModel, Validators} from '@angular/forms';
 import {customerTypes} from '../../../assets/data/customerTypeList';
-import {CustomerService} from '../../customer.service';
+import {CustomerService} from '../../service/customer.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -23,9 +23,7 @@ export class CustomerCreateComponent implements OnInit {
     address     : '',
     phone       : '',
     mail        : '',
-    customerType: {
-      id: null
-    }
+    customerType: null
   };
   customerTypes = customerTypes;
   customerForm: FormGroup;
@@ -41,9 +39,7 @@ export class CustomerCreateComponent implements OnInit {
       phone       : new FormControl(this.customer.phone, [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
       address     : new FormControl(this.customer.address, [Validators.required]),
       mail        : new FormControl(this.customer.mail, [Validators.required, Validators.email]),
-      customerType: new FormGroup({
-        id: new FormControl(this.customer.customerType.id, [Validators.required])
-      }),
+      customerType: new FormControl(this.customer.customerType, [Validators.required]),
     });
   }
 

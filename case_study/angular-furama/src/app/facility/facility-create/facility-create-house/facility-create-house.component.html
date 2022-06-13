@@ -1,1 +1,162 @@
-<p>facility-create-house works!</p>
+<form [formGroup]="houseForm" (ngSubmit)="onSubmit()">
+<!--  {{ houseForm.value | json }}-->
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="id">ID</label>
+    <div class="col-sm-3">
+      <input type="text" id="id" class="form-control"
+             formControlName="id">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+      !houseForm.controls.id?.valid
+      && (houseForm.controls.id?.dirty ||houseForm.controls.id?.touched)">
+      <div [hidden]="!houseForm.controls.id.errors.required">
+        ID must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="name">Facility Name</label>
+    <div class="col-sm-6">
+      <input type="text" id="name" class="form-control"
+             formControlName="name">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+      !houseForm.controls.name?.valid
+      && (houseForm.controls.name?.dirty ||houseForm.controls.name?.touched)">
+      <div [hidden]="!houseForm.controls.name.errors.required">
+        Facility Name must be required
+      </div>
+      <div [hidden]="!houseForm.controls.name.errors.pattern">
+        Facility Name contains alphabet only
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="area">Area</label>
+    <div class="col-sm-3">
+      <input formControlName="area" type="number" min="1" id="area" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !houseForm.controls.area?.valid
+                && (houseForm.controls.area?.dirty ||houseForm.controls.area?.touched)">
+      <div [hidden]="!houseForm.controls.area.errors.required">
+        Area must be required
+      </div>
+      <div [hidden]="!houseForm.controls.area.errors.positive_number">
+        Area must be positive
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="cost">Cost</label>
+    <div class="col-sm-3">
+      <input formControlName="cost" type="number" id="cost" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !houseForm.controls.cost?.valid
+                && (houseForm.controls.cost?.dirty ||houseForm.controls.cost?.touched)">
+      <div [hidden]="!houseForm.controls.cost.errors.required">
+        Cost must be required
+      </div>
+      <div [hidden]="!houseForm.controls.cost.errors.positive_number">
+        Cost must be positive
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="maxPeople">Max People Allow</label>
+    <div class="col-sm-3">
+      <input formControlName="maxPeople" type="number" id="maxPeople" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !houseForm.controls.maxPeople?.valid
+                && (houseForm.controls.maxPeople?.dirty ||houseForm.controls.maxPeople?.touched)">
+      <div [hidden]="!houseForm.controls.maxPeople.errors.required">
+        Max People must be required
+      </div>
+      <div [hidden]="!houseForm.controls.maxPeople.errors.positive_number">
+        Max People must be positive
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="floor">Floor</label>
+    <div class="col-sm-3">
+      <input formControlName="floor" type="number" id="floor" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !houseForm.controls.floor?.valid
+                && (houseForm.controls.floor?.dirty ||houseForm.controls.floor?.touched)">
+      <div [hidden]="!houseForm.controls.floor.errors.required">
+        Floor must be required
+      </div>
+      <div [hidden]="!houseForm.controls.floor.errors.positive_number">
+        Floor must be positive
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="otherConvenient">Other Convenient</label>
+    <div class="col-sm-6">
+      <input formControlName="otherConvenient" type="text" id="otherConvenient" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !houseForm.controls.otherConvenient?.valid
+                && (houseForm.controls.otherConvenient?.dirty ||houseForm.controls.otherConvenient?.touched)">
+      <div [hidden]="!houseForm.controls.otherConvenient.errors.required">
+        Other Convenient must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="standardRoom">Room Standard</label>
+    <div class="col-sm-3">
+      <input formControlName="standardRoom" type="text" id="standardRoom" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !houseForm.controls.standardRoom?.valid
+                && (houseForm.controls.standardRoom?.dirty ||houseForm.controls.standardRoom?.touched)">
+      <div [hidden]="!houseForm.controls.standardRoom.errors.required">
+        Room Standard must be required
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row" >
+    <label class="col-sm-3 col-form-label text-right" for="rentType">Rent Type</label>
+    <div class="col-sm-3">
+      <select formControlName="rentType" class="custom-select" id="rentType">
+        <option [ngValue]="null">---Choose Rent Type---</option>
+        <option [ngValue]="rt" *ngFor="let rt of rentTypes">
+          {{rt.name}}
+        </option>
+      </select>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="!houseForm.controls.rentType?.valid
+                  && (houseForm.controls.rentType?.dirty ||houseForm.controls.rentType?.touched)">
+      <div [hidden]="!houseForm.controls.rentType?.errors.required">
+        Rent Type must be required
+      </div>
+    </div>
+  </div>
+
+  <div class="d-none">
+    <input type="hidden" formControlName="facilityType">
+  </div>
+  <input type="hidden" formControlName="img">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right"></label>
+    <div class="col-sm-3">
+      <button type="submit" class="btn btn-success" [disabled]="!houseForm.valid">Submit</button>
+    </div>
+  </div>
+</form>

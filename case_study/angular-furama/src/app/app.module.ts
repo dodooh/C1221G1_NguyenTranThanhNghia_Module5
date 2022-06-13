@@ -20,6 +20,7 @@ import {ModalCustomerDetailComponent} from './modal-customer-detail/modal-custom
 import {FacilityCreateVillaComponent} from './facility/facility-create/facility-create-villa/facility-create-villa.component';
 import {FacilityCreateRoomComponent} from './facility/facility-create/facility-create-room/facility-create-room.component';
 import {FacilityCreateHouseComponent} from './facility/facility-create/facility-create-house/facility-create-house.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'facility', component: FacilityListComponent},
   {path: 'contract/create', component: ContractCreateComponent},
   {path: 'contract', component: ContractListComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
@@ -57,7 +59,9 @@ const routes: Routes = [
     ModalDeleteComponent,
     ModalCustomerDetailComponent,
     FacilityCreateVillaComponent,
-    FacilityCreateRoomComponent
+    FacilityCreateRoomComponent,
+    FacilityCreateHouseComponent,
+    NotFoundComponent
   ],
   imports     : [
     BrowserModule,

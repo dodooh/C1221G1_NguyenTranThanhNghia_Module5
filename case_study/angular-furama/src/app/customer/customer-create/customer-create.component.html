@@ -155,19 +155,20 @@
       </div>
     </div>
   </div>
-  <div class="form-group row" formGroupName="customerType">
+  <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="customerType">Customer Type</label>
     <div class="col-sm-3">
-      <select formControlName="id" class="custom-select" id="customerType">
-        <option [ngValue]="ct.id" *ngFor="let ct of customerTypes">
+      <select formControlName="customerType" class="custom-select" id="customerType">
+        <option [ngValue]="null">---Choose Customer Type---</option>
+        <option [ngValue]="ct" *ngFor="let ct of customerTypes">
           {{ct.name}}
         </option>
       </select>
     </div>
     <div class="text-small text-danger"
-         *ngIf="!customerForm.controls.customerType['controls'].id?.valid
-                && (customerForm.controls.customerType['controls'].id?.dirty ||customerForm.controls.customerType['controls'].id?.touched)">
-      <div [hidden]="!customerForm.controls.customerType['controls'].id?.errors.required">
+         *ngIf="!customerForm.controls.customerType?.valid
+                && (customerForm.controls.customerType?.dirty ||customerForm.controls.customerType?.touched)">
+      <div [hidden]="!customerForm.controls.customerType?.errors.required">
         Customer Type must be required
       </div>
     </div>
