@@ -31,13 +31,13 @@
                 </button>
               </li>
               <li class="nav-item">
-                <a class="btn btn-outline-warning" [routerLink]="['/facility/update', facility.id]">
+                <a class="btn btn-outline-warning" [routerLink]="['/facility/update',facility.facilityType.id, facility.id]">
                   <i class='bx bx-cog bx-sx'></i>
                 </a>
               </li>
               <li class="nav-item">
                 <button class="btn btn-outline-danger" data-toggle="modal"
-                        data-target="#deleteModal" (click)="showMessage(facility.name)">
+                        data-target="#deleteModal" (click)="showMessage(facility.name, facility.id)">
                   <i class='bx bx-trash bx-sx'></i>
                 </button>
               </li>
@@ -49,5 +49,5 @@
   </div>
 </div>
 
-<app-modal-delete [messageDelete]="nameFacilityToDelete"></app-modal-delete>
+<app-modal-delete (confirmDelete)="deleteFacility($event)" [messageDelete]="nameFacilityToDelete" [idDelete]="idCustomerToDelete"></app-modal-delete>
 

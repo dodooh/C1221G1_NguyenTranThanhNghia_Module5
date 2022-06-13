@@ -20,14 +20,23 @@ import {ModalCustomerDetailComponent} from './modal-customer-detail/modal-custom
 import {FacilityCreateVillaComponent} from './facility/facility-create/facility-create-villa/facility-create-villa.component';
 import {FacilityCreateRoomComponent} from './facility/facility-create/facility-create-room/facility-create-room.component';
 import {FacilityCreateHouseComponent} from './facility/facility-create/facility-create-house/facility-create-house.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {FacilityUpdateVillaComponent} from './facility/facility-update/facility-update-villa/facility-update-villa.component';
+import {FacilityUpdateHouseComponent} from './facility/facility-update/facility-update-house/facility-update-house.component';
+import {FacilityUpdateRoomComponent} from './facility/facility-update/facility-update-room/facility-update-room.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'customer/update/:customerId', component: CustomerUpdateComponent},
   {path: 'customer/create', component: CustomerCreateComponent},
   {path: 'customer', component: CustomerListComponent},
-  {path: 'facility/update/:facilityId', component: FacilityUpdateComponent},
+  {
+    path: 'facility/update', component: FacilityUpdateComponent, children: [
+      {path: '1/:facilityId', component: FacilityUpdateVillaComponent},
+      {path: '2/:facilityId', component: FacilityUpdateHouseComponent},
+      {path: '3/:facilityId', component: FacilityUpdateRoomComponent},
+    ]
+  },
   {
     path: 'facility/create', component: FacilityCreateComponent, children: [
       {path: '', pathMatch: 'full', redirectTo: 'villa'},
@@ -61,7 +70,10 @@ const routes: Routes = [
     FacilityCreateVillaComponent,
     FacilityCreateRoomComponent,
     FacilityCreateHouseComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FacilityUpdateVillaComponent,
+    FacilityUpdateHouseComponent,
+    FacilityUpdateRoomComponent
   ],
   imports     : [
     BrowserModule,

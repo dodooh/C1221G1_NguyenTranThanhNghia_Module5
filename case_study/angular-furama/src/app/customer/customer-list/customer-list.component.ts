@@ -17,7 +17,9 @@ export class CustomerListComponent implements OnInit  {
   nameCustomerToDelete: string;
   idCustomerToDelete: string;
   customerPassToModal: Customer;
-  constructor(private route: Router, private shareService: ShareService, private customerService: CustomerService  ) { }
+  constructor(private route: Router,
+              private shareService: ShareService,
+              private customerService: CustomerService  ) { }
 
   ngOnInit(): void {
     this.shareService.emitChange('Customer');
