@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
 export class CustomerListComponent implements OnInit  {
 
   customers: Customer[] | any;
-  customerTypes = customerTypes;
   nameCustomerToDelete: string;
   idCustomerToDelete: string;
   customerPassToModal: Customer;
