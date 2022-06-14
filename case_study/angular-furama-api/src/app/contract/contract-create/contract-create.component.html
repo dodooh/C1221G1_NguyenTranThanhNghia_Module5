@@ -1,0 +1,106 @@
+<div class="mb-2">
+  <a class="btn btn-secondary"
+     [routerLink]="['/contract']"
+     role="button">
+    <
+    <span>Back to List</span>
+  </a>
+</div>
+
+<div class="form-group row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-9">
+    <h2>Create New Contract</h2>
+  </div>
+</div>
+<form [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="customer">Customer</label>
+    <div class="col-sm-3">
+      <select formControlName="customer" class="custom-select" id="customer">
+        <option [ngValue]="null">Choose Customer</option>
+        <option [ngValue]="c" *ngFor="let c of customers"> {{c.name}}</option>
+      </select>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="!contractForm.controls.customer?.valid
+                && (contractForm.controls.customer?.dirty ||contractForm.controls.customer?.touched)">
+      <div [hidden]="!contractForm.controls.customer?.errors.required">
+        Customer must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="facility">Facility</label>
+    <div class="col-sm-3">
+      <select formControlName="facility" class="custom-select" id="facility">
+        <option [ngValue]="null">Choose Facility</option>
+        <option [ngValue]="f" *ngFor="let f of facilities"> {{f.name}}</option>
+      </select>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="!contractForm.controls.facility?.valid
+                && (contractForm.controls.facility?.dirty ||contractForm.controls.facility?.touched)">
+      <div [hidden]="!contractForm.controls.facility?.errors.required">
+        Facility must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="startDate">Start Date</label>
+    <div class="col-sm-3">
+      <input formControlName="startDate" type="date" id="startDate" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !contractForm.controls.startDate?.valid
+                && (contractForm.controls.startDate?.dirty ||contractForm.controls.startDate?.touched)">
+      <div [hidden]="!contractForm.controls.startDate.errors.required">
+        Start Date must be required
+      </div>
+      <div [hidden]="!contractForm.controls.startDate.errors.pattern">
+        Start Date must exact pattern dd/MM/yyyy
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="endDate">End Date</label>
+    <div class="col-sm-3">
+      <input formControlName="endDate" type="date" id="endDate" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !contractForm.controls.endDate?.valid
+                && (contractForm.controls.endDate?.dirty ||contractForm.controls.endDate?.touched)">
+      <div [hidden]="!contractForm.controls.endDate.errors.required">
+        End Date must be required
+      </div>
+      <div [hidden]="!contractForm.controls.endDate.errors.pattern">
+        End Date must exact pattern dd/MM/yyyy
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="deposit">Deposit</label>
+    <div class="col-sm-3">
+      <input formControlName="deposit" type="text" id="deposit" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !contractForm.controls.deposit?.valid
+                && (contractForm.controls.deposit?.dirty ||contractForm.controls.deposit?.touched)">
+      <div [hidden]="!contractForm.controls.deposit.errors.required">
+        Deposit must be required
+      </div>
+      <div [hidden]="!contractForm.controls.deposit.errors.min">
+        Deposit must be >= 0
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right"></label>
+    <div class="col-sm-3">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,181 @@
+<div class="mb-2">
+  <a class="btn btn-secondary"
+     [routerLink]="['/customer']"
+     role="button">
+    <
+    <span>Back to List</span>
+  </a>
+</div>
+
+<div class="form-group row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-9">
+    <h2>Update Customer</h2>
+  </div>
+</div>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm)">
+  <!--  {{ customerForm.value | json }}-->
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="id">ID</label>
+    <div class="col-sm-3">
+      <input type="text" id="id" class="form-control"
+             formControlName="id" placeholder="KH-1234">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+      !customerForm.controls.id?.valid
+      && (customerForm.controls.id?.dirty ||customerForm.controls.id?.touched)">
+      <div [hidden]="!customerForm.controls.id.errors.required">
+        ID must be required
+      </div>
+      <div [hidden]="!customerForm.controls.id.errors.pattern">
+        ID pattern fail (KH-XXXX)
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="name">Customer Name</label>
+    <div class="col-sm-6">
+      <input type="text" id="name" class="form-control"
+             formControlName="name" placeholder="Ex: Nguyen Van A">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+      !customerForm.controls.name?.valid
+      && (customerForm.controls.name?.dirty ||customerForm.controls.name?.touched)">
+      <div [hidden]="!customerForm.controls.name.errors.required">
+        Name must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right">Gender</label>
+    <div class="col-sm-1">
+      <div class="form-check">
+        <input formControlName="gender" class="form-check-input" type="radio" id="MaleRadio" value="1">
+        <label class="form-check-label" for="MaleRadio">Male</label>
+      </div>
+      <div class="form-check">
+        <input formControlName="gender" class="form-check-input" type="radio" id="FemaleRadio" value="0">
+        <label class="form-check-label" for="FemaleRadio">Female</label>
+      </div>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !customerForm.controls.gender?.valid
+                && (customerForm.controls.gender?.dirty ||customerForm.controls.gender?.touched)">
+      <div [hidden]="!customerForm.controls.gender.errors.required">
+        Gender must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="dayOfBirth">Day Of Birth</label>
+    <div class="col-sm-3">
+      <input formControlName="dayOfBirth" type="date" id="dayOfBirth" class="form-control">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !customerForm.controls.dayOfBirth?.valid
+                && (customerForm.controls.dayOfBirth?.dirty ||customerForm.controls.dayOfBirth?.touched)">
+      <div [hidden]="!customerForm.controls.dayOfBirth.errors.required">
+        Day Of Birth must be required
+      </div>
+      <div [hidden]="!customerForm.controls.dayOfBirth.errors.pattern">
+        Day Of Birth must exact pattern dd/MM/yyyy
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="nationalId">National ID</label>
+    <div class="col-sm-3">
+      <input formControlName="nationalId" type="text" id="nationalId" class="form-control"
+             placeholder="Ex: 123456789">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !customerForm.controls.nationalId?.valid
+                && (customerForm.controls.nationalId?.dirty ||customerForm.controls.nationalId?.touched)">
+      <div [hidden]="!customerForm.controls.nationalId.errors.required">
+        National ID must be required
+      </div>
+      <div [hidden]="!customerForm.controls.nationalId.errors.pattern">
+        National ID must has 9 numbers
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="address">Address</label>
+    <div class="col-sm-6">
+      <input formControlName="address" type="text" id="address" class="form-control"
+             placeholder="Ex: 18 Nguyen Chi Thanh">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !customerForm.controls.address?.valid
+                && (customerForm.controls.address?.dirty ||customerForm.controls.address?.touched)">
+      <div [hidden]="!customerForm.controls.address.errors.required">
+        Address must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="phone">Phone</label>
+    <div class="col-sm-3">
+      <input formControlName="phone" type="text" id="phone" class="form-control"
+             placeholder="Ex: 0912345678">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !customerForm.controls.phone?.valid
+                && (customerForm.controls.phone?.dirty ||customerForm.controls.phone?.touched)">
+      <div [hidden]="!customerForm.controls.phone.errors.required">
+        Phone Number must be required
+      </div>
+      <div [hidden]="!customerForm.controls.phone.errors.pattern">
+        Phone Number must be start with 090 | 091 | (+84)90 | (+84)91
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="email">Email</label>
+    <div class="col-sm-6">
+      <input formControlName="mail" type="text" id="email" class="form-control"
+             placeholder="Ex: codegym123@gmail.co">
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="
+                !customerForm.controls.mail?.valid
+                && (customerForm.controls.mail?.dirty ||customerForm.controls.mail?.touched)">
+      <div [hidden]="!customerForm.controls.mail.errors.required">
+        Email must be required
+      </div>
+      <div [hidden]="!customerForm.controls.mail.errors.email">
+        Email must right format
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right" for="customerType">Customer Type</label>
+    <div class="col-sm-3">
+      <select formControlName="customerType" [compareWith]="compareByID" class="custom-select" id="customerType">
+        <option [ngValue]="ct" *ngFor="let ct of customerTypes">
+          {{ct.name}}
+        </option>
+      </select>
+    </div>
+    <div class="text-small text-danger"
+         *ngIf="!customerForm.controls.customerType?.valid
+                && (customerForm.controls.customerType?.dirty ||customerForm.controls.customerType?.touched)">
+      <div [hidden]="!customerForm.controls.customerType?.errors.required">
+        Customer Type must be required
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-right"></label>
+    <div class="col-sm-3">
+      <button type="submit" class="btn btn-success" [disabled]="!customerForm.valid">Submit</button>
+    </div>
+  </div>
+</form>

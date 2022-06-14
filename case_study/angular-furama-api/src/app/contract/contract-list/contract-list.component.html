@@ -1,0 +1,58 @@
+<div class="mb-2">
+  <a class="btn btn-success"
+     [routerLink]="['/contract/create']"
+     role="button">
+    +
+    <span>Contract</span>
+  </a>
+</div>
+
+<table class="table table-light table-bordered small">
+  <thead class="thead thead-dark text-center">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Contract Code</th>
+    <th scope="col">Customer Name</th>
+    <th scope="col">Service</th>
+    <th scope="col">Start Date</th>
+    <th scope="col">End Date</th>
+    <th scope="col">Deposit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contract of contracts, index as index">
+    <td>{{index}}</td>
+    <td>{{contract.id}}</td>
+    <td>{{contract.customer.name}}</td>
+    <td>{{contract.facility.name}}</td>
+    <td>{{contract.startDate}}</td>
+    <td>{{contract.endDate}}</td>
+    <td>{{contract.deposit}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="pagination-control">
+  <div class="row d-flex justify-content-center">
+    <nav aria-label="Page navigation example"
+         style="width: initial">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="btn btn-light">
+            Previous
+          </a>
+        </li>
+        <li class="page-item btn btn-light disabled">1</li>
+        <li class="page-item btn btn-light disabled">/</li>
+        <li class="page-item btn btn-light disabled">3</li>
+        <span>&nbsp;</span>
+        <li class="page-item">
+          <a class="btn btn-light">
+            Next
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+

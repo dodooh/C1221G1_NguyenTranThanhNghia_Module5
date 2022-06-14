@@ -1,0 +1,21 @@
+.dropout {
+  width: fit-content;
+  position: relative;
+}
+.dropout ul {
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.12s ease;
+}
+.dropout.active ul {
+  /*padding: 5px;*/
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  transform: scaleX(1);
+  border-radius: 5px;
+  /*min-width: 150px;*/
+}
+.dropout.active li {
+  padding: 2px;
+}
