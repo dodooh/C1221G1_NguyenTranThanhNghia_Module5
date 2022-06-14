@@ -1,4 +1,4 @@
-export class CustomerType {
+export interface CustomerType {
   id: number;
   name: string;
 }

@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {positive_number} from '../../../positive-number.validator';
-import {FacilityService} from '../../../service/facility.service';
+import {FacilityService} from '../../facility.service';
 import {rentTypes} from '../../../../assets/data/rentTypeList';
 import {Router} from '@angular/router';
-import {FacilityTypeService} from "../../../service/facility-type.service";
+import {FacilityTypeService} from "../../facility-type.service";
 
 @Component({
-  selector: 'app-facility-create-house',
+  selector   : 'app-facility-create-house',
   templateUrl: './facility-create-house.component.html',
-  styleUrls: ['./facility-create-house.component.css']
+  styleUrls  : ['./facility-create-house.component.css']
 })
 export class FacilityCreateHouseComponent implements OnInit {
   houseForm: FormGroup;
   rentTypes = rentTypes;
+
   constructor(private route: Router,
               private facilityService: FacilityService,
-              private facilityTypeService: FacilityTypeService) { }
+              private facilityTypeService: FacilityTypeService) {
+  }
 
   ngOnInit(): void {
     this.houseForm = new FormGroup({

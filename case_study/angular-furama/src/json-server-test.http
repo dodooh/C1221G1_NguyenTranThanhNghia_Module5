@@ -1,0 +1,18 @@
+GET http://localhost:5000/contracts
+Accept: application/json
+
+###
+GET http://localhost:5000/facilities
+Accept: application/json
+
+###
+GET http://localhost:5000/customer-types
+Accept: application/json
+
+###
+GET http://localhost:5000/customers/KH-0001
+Accept: application/json
+
+###
+GET http://localhost:5000/customers
+Accept: application/json

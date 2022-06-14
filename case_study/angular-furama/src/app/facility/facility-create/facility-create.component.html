@@ -1,6 +1,6 @@
 <div class="mb-2">
-  <a class="btn btn-secondary"
-     [routerLink]="['/facility']"
+  <a [routerLink]="['/facility']"
+     class="btn btn-secondary"
      role="button">
     <
     <span>Facility List</span>
@@ -11,9 +11,9 @@
   <h2>Create New Facility</h2>
 </div>
 <div class="my-3">
-  <a [routerLink]="['/facility/create/villa']" [routerLinkActive]="'btn-info'" class="btn btn-secondary mr-2">Villa</a>
-  <a [routerLink]="['/facility/create/house']" [routerLinkActive]="'btn-info'" class="btn btn-secondary mr-2">House</a>
-  <a [routerLink]="['/facility/create/room']" [routerLinkActive]="'btn-info'" class="btn btn-secondary">Room</a>
+  <a [routerLinkActive]="'btn-info'" [routerLink]="['/facility/create/villa']" class="btn btn-secondary mr-2">Villa</a>
+  <a [routerLinkActive]="'btn-info'" [routerLink]="['/facility/create/house']" class="btn btn-secondary mr-2">House</a>
+  <a [routerLinkActive]="'btn-info'" [routerLink]="['/facility/create/room']" class="btn btn-secondary">Room</a>
 </div>
 <router-outlet></router-outlet>
 

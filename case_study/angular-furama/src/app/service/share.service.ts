@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +9,12 @@ export class ShareService {
   private emitChangeSource = new Subject<any>();
   // Observable string streams
   changeEmitted$ = this.emitChangeSource.asObservable();
+
+  constructor() {
+  }
+
   // Service message commands
   emitChange(change: any) {
     this.emitChangeSource.next(change);
   }
-  constructor() { }
 }

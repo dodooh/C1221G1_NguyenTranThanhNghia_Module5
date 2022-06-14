@@ -4,8 +4,8 @@ import {positive_number} from '../../../positive-number.validator';
 import {Facility} from '../../../model/facility';
 import {rentTypes} from '../../../../assets/data/rentTypeList';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FacilityService} from '../../../service/facility.service';
-import {FacilityTypeService} from '../../../service/facility-type.service';
+import {FacilityService} from '../../facility.service';
+import {FacilityTypeService} from '../../facility-type.service';
 
 @Component({
   selector   : 'app-facility-update-room',
@@ -18,14 +18,14 @@ export class FacilityUpdateRoomComponent implements OnInit {
   facility: Facility;
   roomForm: FormGroup;
 
-  equals(itemOne, itemTwo) {
-    return itemOne && itemTwo && itemOne.id === itemTwo.id;
-  }
-
   constructor(private activatedRoute: ActivatedRoute,
               private route: Router,
               private facilityService: FacilityService,
               private facilityTypeService: FacilityTypeService) {
+  }
+
+  equals(itemOne, itemTwo) {
+    return itemOne && itemTwo && itemOne.id === itemTwo.id;
   }
 
   ngOnInit(): void {

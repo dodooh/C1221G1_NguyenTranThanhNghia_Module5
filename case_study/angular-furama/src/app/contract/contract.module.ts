@@ -9,10 +9,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [ContractCreateComponent, ContractListComponent],
-  imports: [
+  imports     : [
     CommonModule,
     ContractRoutingModule,
     ReactiveFormsModule,
   ]
 })
-export class ContractModule { }
+export class ContractModule {
+}

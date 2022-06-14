@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, NgForm, NgModel, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {customerTypes} from '../../../assets/data/customerTypeList';
-import {CustomerService} from '../../service/customer.service';
 import {Router} from '@angular/router';
+import {CustomerRestService} from '../customer-rest.service';
 
 @Component({
   selector   : 'app-customer-create',
@@ -10,9 +10,6 @@ import {Router} from '@angular/router';
   styleUrls  : ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit {
-
-  constructor(private router: Router, private customerService: CustomerService) {
-  }
 
   customer = {
     id          : '',
@@ -28,6 +25,11 @@ export class CustomerCreateComponent implements OnInit {
   customerTypes = customerTypes;
   customerForm: FormGroup;
 
+  constructor(
+    private router: Router,
+    private customerRestService: CustomerRestService
+  ) {
+  }
 
   ngOnInit(): void {
     this.customerForm = new FormGroup({
@@ -46,7 +48,14 @@ export class CustomerCreateComponent implements OnInit {
 
   onSubmit(customerForm: FormGroup) {
     console.log(customerForm);
-    this.customerService.addCustomerToObjectTS(customerForm.value);
+    // this.customerService.addCustomerToObjectTS(customerForm.value);
+    this.customerRestService.createCustomer(customerForm.value).subscribe(
+      res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    );
     this.router.navigate(['/customer']);
   }
 }

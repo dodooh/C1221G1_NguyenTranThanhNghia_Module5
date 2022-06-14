@@ -27,11 +27,12 @@ import {SharedModule} from '../shared/shared.module';
     FacilityUpdateHouseComponent,
     FacilityUpdateRoomComponent
   ],
-  imports: [
+  imports     : [
     CommonModule,
     FacilityRoutingModule,
     ReactiveFormsModule,
     SharedModule,
   ]
 })
-export class FacilityModule { }
+export class FacilityModule {
+}

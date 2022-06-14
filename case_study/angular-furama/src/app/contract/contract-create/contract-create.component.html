@@ -1,6 +1,6 @@
 <div class="mb-2">
-  <a class="btn btn-secondary"
-     [routerLink]="['/contract']"
+  <a [routerLink]="['/contract']"
+     class="btn btn-secondary"
      role="button">
     <
     <span>Back to List</span>
@@ -13,18 +13,18 @@
     <h2>Create New Contract</h2>
   </div>
 </div>
-<form [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="contractForm">
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="customer">Customer</label>
     <div class="col-sm-3">
-      <select formControlName="customer" class="custom-select" id="customer">
+      <select class="custom-select" formControlName="customer" id="customer">
         <option [ngValue]="null">Choose Customer</option>
-        <option [ngValue]="c" *ngFor="let c of customers"> {{c.name}}</option>
+        <option *ngFor="let c of customers" [ngValue]="c"> {{c.name}}</option>
       </select>
     </div>
-    <div class="text-small text-danger"
-         *ngIf="!contractForm.controls.customer?.valid
-                && (contractForm.controls.customer?.dirty ||contractForm.controls.customer?.touched)">
+    <div *ngIf="!contractForm.controls.customer?.valid
+                && (contractForm.controls.customer?.dirty ||contractForm.controls.customer?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!contractForm.controls.customer?.errors.required">
         Customer must be required
       </div>
@@ -33,14 +33,14 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="facility">Facility</label>
     <div class="col-sm-3">
-      <select formControlName="facility" class="custom-select" id="facility">
+      <select class="custom-select" formControlName="facility" id="facility">
         <option [ngValue]="null">Choose Facility</option>
-        <option [ngValue]="f" *ngFor="let f of facilities"> {{f.name}}</option>
+        <option *ngFor="let f of facilities" [ngValue]="f"> {{f.name}}</option>
       </select>
     </div>
-    <div class="text-small text-danger"
-         *ngIf="!contractForm.controls.facility?.valid
-                && (contractForm.controls.facility?.dirty ||contractForm.controls.facility?.touched)">
+    <div *ngIf="!contractForm.controls.facility?.valid
+                && (contractForm.controls.facility?.dirty ||contractForm.controls.facility?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!contractForm.controls.facility?.errors.required">
         Facility must be required
       </div>
@@ -49,12 +49,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="startDate">Start Date</label>
     <div class="col-sm-3">
-      <input formControlName="startDate" type="date" id="startDate" class="form-control">
+      <input class="form-control" formControlName="startDate" id="startDate" type="date">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !contractForm.controls.startDate?.valid
-                && (contractForm.controls.startDate?.dirty ||contractForm.controls.startDate?.touched)">
+                && (contractForm.controls.startDate?.dirty ||contractForm.controls.startDate?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!contractForm.controls.startDate.errors.required">
         Start Date must be required
       </div>
@@ -66,12 +66,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="endDate">End Date</label>
     <div class="col-sm-3">
-      <input formControlName="endDate" type="date" id="endDate" class="form-control">
+      <input class="form-control" formControlName="endDate" id="endDate" type="date">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !contractForm.controls.endDate?.valid
-                && (contractForm.controls.endDate?.dirty ||contractForm.controls.endDate?.touched)">
+                && (contractForm.controls.endDate?.dirty ||contractForm.controls.endDate?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!contractForm.controls.endDate.errors.required">
         End Date must be required
       </div>
@@ -83,12 +83,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="deposit">Deposit</label>
     <div class="col-sm-3">
-      <input formControlName="deposit" type="text" id="deposit" class="form-control">
+      <input class="form-control" formControlName="deposit" id="deposit" type="text">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !contractForm.controls.deposit?.valid
-                && (contractForm.controls.deposit?.dirty ||contractForm.controls.deposit?.touched)">
+                && (contractForm.controls.deposit?.dirty ||contractForm.controls.deposit?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!contractForm.controls.deposit.errors.required">
         Deposit must be required
       </div>
@@ -100,7 +100,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right"></label>
     <div class="col-sm-3">
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button class="btn btn-success" type="submit">Submit</button>
     </div>
   </div>
 </form>

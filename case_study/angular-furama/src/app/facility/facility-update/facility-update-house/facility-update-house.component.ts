@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Facility} from '../../../model/facility';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FacilityService} from '../../../service/facility.service';
-import {FacilityTypeService} from '../../../service/facility-type.service';
+import {FacilityService} from '../../facility.service';
+import {FacilityTypeService} from '../../facility-type.service';
 import {positive_number} from '../../../positive-number.validator';
 import {rentTypes} from '../../../../assets/data/rentTypeList';
 
 @Component({
-  selector: 'app-facility-update-house',
+  selector   : 'app-facility-update-house',
   templateUrl: './facility-update-house.component.html',
-  styleUrls: ['./facility-update-house.component.css']
+  styleUrls  : ['./facility-update-house.component.css']
 })
 export class FacilityUpdateHouseComponent implements OnInit {
   rentTypes = rentTypes;
   facility: Facility;
   houseForm: FormGroup;
 
-  equals(itemOne, itemTwo) {
-    return itemOne && itemTwo && itemOne.id == itemTwo.id;
-  }
-
   constructor(private activatedRoute: ActivatedRoute,
               private route: Router,
               private facilityService: FacilityService,
               private facilityTypeService: FacilityTypeService) {
+  }
+
+  equals(itemOne, itemTwo) {
+    return itemOne && itemTwo && itemOne.id == itemTwo.id;
   }
 
   ngOnInit(): void {

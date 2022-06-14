@@ -1,6 +1,6 @@
 <div class="mb-2">
-  <a class="btn btn-success"
-     [routerLink]="['/customer/create']"
+  <a [routerLink]="['/customer/create']"
+     class="btn btn-success"
      role="button">
     +
     <span>Customer</span>
@@ -14,10 +14,10 @@
     <th scope="col">ID</th>
     <th scope="col">Name</th>
     <th scope="col">Gender</th>
-<!--    <th scope="col">National Id</th>-->
-<!--    <th scope="col">DOB</th>-->
+    <!--    <th scope="col">National Id</th>-->
+    <!--    <th scope="col">DOB</th>-->
     <th scope="col">Phone</th>
-<!--    <th scope="col">Address</th>-->
+    <!--    <th scope="col">Address</th>-->
     <th scope="col">Email</th>
     <th scope="col">Customer Type</th>
     <th scope="col"></th>
@@ -32,25 +32,25 @@
     <ng-template #femaleTd>
       <td>Female</td>
     </ng-template>
-<!--    <td>{{ customer.nationalId }}</td>-->
-<!--    <td>{{ customer.dayOfBirth | date: 'dd/MM/yyyy'}}</td>-->
+    <!--    <td>{{ customer.nationalId }}</td>-->
+    <!--    <td>{{ customer.dayOfBirth | date: 'dd/MM/yyyy'}}</td>-->
     <td>{{ customer.phone }}</td>
-<!--    <td>{{ customer.address }}</td>-->
+    <!--    <td>{{ customer.address }}</td>-->
     <td>{{ customer.mail }}</td>
     <td>{{ customer.customerType.name }}</td>
     <td>
-      <button type="button" class="btn btn-outline-info"
-              data-toggle="modal" data-target="#detailModal"
-              (click)="passCustomerToModal(customer)"
+      <button (click)="passCustomerToModal(customer)" class="btn btn-outline-info"
+              data-target="#detailModal" data-toggle="modal"
+              type="button"
       >
         <i class='bx bx-search-alt bx-sx'></i>
       </button>
-      <a class="btn btn-outline-warning mx-1" [routerLink]="['/customer/update',customer.id]">
+      <a [routerLink]="['/customer/update',customer.id]" class="btn btn-outline-warning mx-1">
         <i class='bx bx-cog bx-sx'></i>
       </a>
-      <button type="button" class="btn btn-outline-danger"
-              data-toggle="modal" data-target="#deleteModal"
-              (click)="showMessageDelete(customer.name, customer.id)"
+      <button (click)="showMessageDelete(customer.name, customer.id)" class="btn btn-outline-danger"
+              data-target="#deleteModal" data-toggle="modal"
+              type="button"
       >
         <i class='bx bx-trash bx-sx'></i>
       </button>
@@ -82,5 +82,6 @@
   </div>
 </div>
 
-<app-modal-delete (confirmDelete)="deleteCustomer($event)" [messageDelete]="nameCustomerToDelete" [idDelete]="idCustomerToDelete"></app-modal-delete>
+<app-modal-delete (confirmDelete)="deleteCustomer($event)" [idDelete]="idCustomerToDelete"
+                  [messageDelete]="nameCustomerToDelete"></app-modal-delete>
 <app-modal-customer-detail [customer]="customerPassToModal"></app-modal-customer-detail>

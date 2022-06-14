@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-facility-update',
+  selector   : 'app-facility-update',
   templateUrl: './facility-update.component.html',
-  styleUrls: ['./facility-update.component.css']
+  styleUrls  : ['./facility-update.component.css']
 })
 export class FacilityUpdateComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

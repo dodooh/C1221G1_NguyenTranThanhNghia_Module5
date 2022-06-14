@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {FacilityListComponent} from './facility-list/facility-list.component';
 import {FacilityCreateHouseComponent} from './facility-create/facility-create-house/facility-create-house.component';
 import {FacilityCreateRoomComponent} from './facility-create/facility-create-room/facility-create-room.component';
@@ -34,4 +34,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FacilityRoutingModule { }
+export class FacilityRoutingModule {
+}

@@ -1,39 +1,43 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../model/customer';
-import {customers} from '../../../assets/data/customerList';
 import {ShareService} from '../../service/share.service';
-import {CustomerService} from '../../service/customer.service';
-import {customerTypes} from '../../../assets/data/customerTypeList';
 import {Router} from '@angular/router';
+import {CustomerRestService} from '../customer-rest.service';
+
 @Component({
-  selector: 'app-customer-list',
+  selector   : 'app-customer-list',
   templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.css']
+  styleUrls  : ['./customer-list.component.css']
 })
-export class CustomerListComponent implements OnInit  {
+export class CustomerListComponent implements OnInit {
 
   customers: Customer[] | any;
   nameCustomerToDelete: string;
   idCustomerToDelete: string;
   customerPassToModal: Customer;
+
   constructor(private route: Router,
               private shareService: ShareService,
-              private customerService: CustomerService  ) { }
+              private customerRestService: CustomerRestService) {
+  }
 
   ngOnInit(): void {
     this.shareService.emitChange('Customer');
-    this.findAll();
+    // this.findAll();
+    this.customerRestService.getCustomers().subscribe(
+      (response) => {
+        this.customers = response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-  // Get from API
-  // listCustomer() {
-  //   this.customerService.getCustomerList().subscribe(data => {
-  //     this.customers = data;
-  //   });
-  // }
 
-  findAll() {
-    this.customers = this.customerService.getCustomerListByObjectTS();
-  }
+
+  // findAll() {
+  //   this.customers = this.customerService.getCustomerListByObjectTS();
+  // }
 
   showMessageDelete(name: string, id: string) {
     this.nameCustomerToDelete = name;
@@ -42,11 +46,18 @@ export class CustomerListComponent implements OnInit  {
 
   deleteCustomer(id: string) {
     console.log(id);
-    this.customerService.deleteCustomerToObjectTS(id);
+    this.customerRestService.deleteCustomer(id).subscribe(
+      res => {
+        console.log(res);
+        this.ngOnInit();
+      },
+      err => console.log(err)
+    );
 
-    this.findAll();
+    // this.customerService.deleteCustomerToObjectTS(id);
+    //
+    // this.findAll();
   }
-
 
   passCustomerToModal(customer: any) {
     this.customerPassToModal = customer;

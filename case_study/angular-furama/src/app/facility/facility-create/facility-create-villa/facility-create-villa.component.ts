@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {rentTypes} from '../../../../assets/data/rentTypeList';
 import {positive_number} from '../../../positive-number.validator';
-import {FacilityService} from '../../../service/facility.service';
+import {FacilityService} from '../../facility.service';
 import {Router} from '@angular/router';
-import {FacilityTypeService} from '../../../service/facility-type.service';
+import {FacilityTypeService} from '../../facility-type.service';
 
 @Component({
-  selector: 'app-facility-create-villa',
+  selector   : 'app-facility-create-villa',
   templateUrl: './facility-create-villa.component.html',
-  styleUrls: ['./facility-create-villa.component.css']
+  styleUrls  : ['./facility-create-villa.component.css']
 })
 export class FacilityCreateVillaComponent implements OnInit {
 
@@ -18,10 +18,13 @@ export class FacilityCreateVillaComponent implements OnInit {
   progress = 0;
   isLoading = false;
   rentTypes = rentTypes;
+  villaForm: FormGroup;
+
   constructor(private route: Router,
               private facilityService: FacilityService,
-              private facilityTypeService: FacilityTypeService) { }
-  villaForm: FormGroup;
+              private facilityTypeService: FacilityTypeService) {
+  }
+
   ngOnInit(): void {
     this.villaForm = new FormGroup({
       id             : new FormControl('', [Validators.required]),

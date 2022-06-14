@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {contracts} from '../../assets/data/contractList';
 
 @Injectable({
@@ -7,7 +7,9 @@ import {contracts} from '../../assets/data/contractList';
 export class ContractService {
 
   contracts = contracts;
-  constructor() { }
+
+  constructor() {
+  }
 
   findAll() {
     return this.contracts;

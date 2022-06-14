@@ -1,8 +1,7 @@
-import {AfterContentInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShareService} from '../../service/share.service';
-import {facilities} from '../../../assets/data/facilityList';
 import {Facility} from '../../model/facility';
-import {FacilityService} from '../../service/facility.service';
+import {FacilityRestService} from '../facility-rest.service';
 
 @Component({
   selector   : 'app-facility-list',
@@ -15,8 +14,10 @@ export class FacilityListComponent implements OnInit {
   nameFacilityToDelete: string;
   idCustomerToDelete: string;
 
-  constructor(private facilityService: FacilityService, private shareService: ShareService) {
-    this.facilities = facilityService.findAll();
+  constructor(
+    private facilityRestService: FacilityRestService,
+    private shareService: ShareService) {
+    this.getList();
   }
 
   ngOnInit(): void {
@@ -28,8 +29,19 @@ export class FacilityListComponent implements OnInit {
     this.idCustomerToDelete = id;
   }
 
+  getList() {
+    this.facilityRestService.getFacilities().subscribe(
+      res => {
+        this.facilities = res;
+        console.log('REST GET facilities success');
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+
   deleteFacility(id) {
-    this.facilityService.remove(id);
-    this.facilities = this.facilityService.findAll();
+    // this.facilityService.remove(id);
+    // this.facilities = this.facilityService.findAll();
   }
 }

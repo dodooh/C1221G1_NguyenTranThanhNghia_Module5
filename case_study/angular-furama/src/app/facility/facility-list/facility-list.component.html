@@ -1,6 +1,6 @@
 <div class="mb-2">
-  <a class="btn btn-success"
-     [routerLink]="['/facility/create']"
+  <a [routerLink]="['/facility/create']"
+     class="btn btn-success"
      role="button">
     +
     <span>Facility</span>
@@ -8,10 +8,10 @@
 </div>
 
 <div class="row">
-  <div class="col-4 mb-3" *ngFor="let facility of facilities">
+  <div *ngFor="let facility of facilities" class="col-4 mb-3">
     <div class="card" style="width: 22rem;">
       <div class="badge badge-warning">${{facility.cost}}</div>
-      <img class="card-img-top" [src]="'../../assets/img/' + facility.img" alt="Card image cap">
+      <img [src]="'../../assets/img/' + facility.img" alt="Card image cap" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title text-uppercase font-weight-bold">{{ facility.name }}</h5>
 
@@ -24,20 +24,21 @@
           <div class="dropout active">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <button type="button" class="btn btn-outline-info"
-                        data-toggle="modal" data-target="#detailModal"
+                <button class="btn btn-outline-info" data-target="#detailModal"
+                        data-toggle="modal" type="button"
                 >
                   <i class='bx bx-search-alt bx-sx'></i>
                 </button>
               </li>
               <li class="nav-item">
-                <a class="btn btn-outline-warning" [routerLink]="['/facility/update',facility.facilityType.id, facility.id]">
+                <a [routerLink]="['/facility/update',facility.facilityType.id, facility.id]"
+                   class="btn btn-outline-warning">
                   <i class='bx bx-cog bx-sx'></i>
                 </a>
               </li>
               <li class="nav-item">
-                <button class="btn btn-outline-danger" data-toggle="modal"
-                        data-target="#deleteModal" (click)="showMessage(facility.name, facility.id)">
+                <button (click)="showMessage(facility.name, facility.id)" class="btn btn-outline-danger"
+                        data-target="#deleteModal" data-toggle="modal">
                   <i class='bx bx-trash bx-sx'></i>
                 </button>
               </li>
@@ -49,5 +50,6 @@
   </div>
 </div>
 
-<app-modal-delete (confirmDelete)="deleteFacility($event)" [messageDelete]="nameFacilityToDelete" [idDelete]="idCustomerToDelete"></app-modal-delete>
+<app-modal-delete (confirmDelete)="deleteFacility($event)" [idDelete]="idCustomerToDelete"
+                  [messageDelete]="nameFacilityToDelete"></app-modal-delete>
 

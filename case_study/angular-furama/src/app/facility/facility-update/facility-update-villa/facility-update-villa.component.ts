@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FacilityService} from '../../../service/facility.service';
+import {FacilityService} from '../../facility.service';
 import {Facility} from '../../../model/facility';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {positive_number} from '../../../positive-number.validator';
-import {FacilityTypeService} from '../../../service/facility-type.service';
+import {FacilityTypeService} from '../../facility-type.service';
 import {rentTypes} from "../../../../assets/data/rentTypeList";
 
 @Component({
@@ -17,14 +17,14 @@ export class FacilityUpdateVillaComponent implements OnInit {
   facility: Facility;
   villaForm: FormGroup;
 
-  equals(itemOne, itemTwo) {
-    return itemOne && itemTwo && itemOne.id == itemTwo.id;
-  }
-
   constructor(private activatedRoute: ActivatedRoute,
               private route: Router,
               private facilityService: FacilityService,
               private facilityTypeService: FacilityTypeService) {
+  }
+
+  equals(itemOne, itemTwo) {
+    return itemOne && itemTwo && itemOne.id == itemTwo.id;
   }
 
   ngOnInit(): void {

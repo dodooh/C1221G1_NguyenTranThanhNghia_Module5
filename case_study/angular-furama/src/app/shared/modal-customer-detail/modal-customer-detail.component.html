@@ -1,51 +1,51 @@
-<div class="modal fade" id="detailModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="detailModal"
+     role="dialog" tabindex="-1">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Customer Detail</h5>
-        <button type="button" class="close text-light" data-dismiss="modal"
-                aria-label="Close">
+        <button aria-label="Close" class="close text-light" data-dismiss="modal"
+                type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body px-3 py-3">
-          <div class="row mb-3 px-3">
-            <label class="col-4">ID</label>
-            <input class="form-control col-8" [value]="customer?.id" readonly  />
-          </div>
-          <div class="row mb-3 px-3">
-            <label class="col-4">Name</label>
-            <input class="form-control col-8" [value]="customer?.name" readonly  />
-          </div>
-          <div class="row mb-3 px-3">
-            <label class="col-4">DOB</label>
-            <input class="form-control col-8" [value]="customer?.dayOfBirth" readonly  />
-          </div>
-          <div class="row mb-3 px-3">
-            <label class="col-4">National ID</label>
-            <input class="form-control col-8" [value]="customer?.nationalId" readonly  />
-          </div>
-          <div class="row mb-3 px-3">
-            <label class="col-4">Address</label>
-            <input class="form-control col-8" [value]="customer?.address" readonly  />
-          </div>
-          <div class="row mb-3 px-3">
-            <label class="col-4">Phone</label>
-            <input class="form-control col-8" [value]="customer?.phone" readonly  />
-          </div>
-          <div class="row mb-3 px-3">
-            <label class="col-4">Mail</label>
-            <input class="form-control col-8" [value]="customer?.mail" readonly  />
-          </div>
-          <div class="row mb-3 px-3">
-            <label class="col-4">Customer Type</label>
-            <input class="form-control col-8" [value]="customer?.customerType.name" readonly  />
-          </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">ID</label>
+          <input [value]="customer?.id" class="form-control col-8" readonly/>
+        </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">Name</label>
+          <input [value]="customer?.name" class="form-control col-8" readonly/>
+        </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">DOB</label>
+          <input [value]="customer?.dayOfBirth" class="form-control col-8" readonly/>
+        </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">National ID</label>
+          <input [value]="customer?.nationalId" class="form-control col-8" readonly/>
+        </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">Address</label>
+          <input [value]="customer?.address" class="form-control col-8" readonly/>
+        </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">Phone</label>
+          <input [value]="customer?.phone" class="form-control col-8" readonly/>
+        </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">Mail</label>
+          <input [value]="customer?.mail" class="form-control col-8" readonly/>
+        </div>
+        <div class="row mb-3 px-3">
+          <label class="col-4">Customer Type</label>
+          <input [value]="customer?.customerType.name" class="form-control col-8" readonly/>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-                data-dismiss="modal">Close
+        <button class="btn btn-secondary" data-dismiss="modal"
+                type="button">Close
         </button>
       </div>
     </div>

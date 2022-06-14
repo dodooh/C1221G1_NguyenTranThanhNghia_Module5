@@ -1,24 +1,24 @@
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="deleteModal"
+     role="dialog" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Confirm Delete?</h5>
-        <button type="button" class="close text-light" data-dismiss="modal"
-                aria-label="Close">
+        <button aria-label="Close" class="close text-light" data-dismiss="modal"
+                type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <input type="hidden" id="id_delete" name="id">
+        <input id="id_delete" name="id" type="hidden">
         <div>Do you want to delete {{messageDelete}}</div>
         <div class="text-danger">WARNING: YOU CAN NOT ROLLBACK AFTER DELETE!!!</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-                data-dismiss="modal">NO
+        <button class="btn btn-secondary" data-dismiss="modal"
+                type="button">NO
         </button>
-        <button (click)="onDelete()" type="button" class="btn btn-danger" data-dismiss="modal">YES</button>
+        <button (click)="onDelete()" class="btn btn-danger" data-dismiss="modal" type="button">YES</button>
       </div>
     </div>
   </div>

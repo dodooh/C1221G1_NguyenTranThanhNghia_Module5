@@ -1,22 +1,22 @@
-<div [hidden]="!isLoading" class="progress-bar-container" [style.backgroundColor]="backgroundColor">
-  <div class="progress" [ngStyle]="{
+<div [hidden]="!isLoading" [style.backgroundColor]="backgroundColor" class="progress-bar-container">
+  <div [ngStyle]="{
   backgroundColor: progressColor,
   width: progress + '%'
-  }"></div>
+  }" class="progress"></div>
 </div>
 
-<form [formGroup]="villaForm" (ngSubmit)="onSubmit()">
-<!--    {{ villaForm.value | json }}-->
+<form (ngSubmit)="onSubmit()" [formGroup]="villaForm">
+  <!--    {{ villaForm.value | json }}-->
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="id">ID</label>
     <div class="col-sm-3">
-      <input type="text" id="id" class="form-control"
-             formControlName="id">
+      <input class="form-control" formControlName="id" id="id"
+             type="text">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
       !villaForm.controls.id?.valid
-      && (villaForm.controls.id?.dirty ||villaForm.controls.id?.touched)">
+      && (villaForm.controls.id?.dirty ||villaForm.controls.id?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.id.errors.required">
         ID must be required
       </div>
@@ -25,13 +25,13 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="name">Facility Name</label>
     <div class="col-sm-6">
-      <input type="text" id="name" class="form-control"
-             formControlName="name">
+      <input class="form-control" formControlName="name" id="name"
+             type="text">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
       !villaForm.controls.name?.valid
-      && (villaForm.controls.name?.dirty ||villaForm.controls.name?.touched)">
+      && (villaForm.controls.name?.dirty ||villaForm.controls.name?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.name.errors.required">
         Facility Name must be required
       </div>
@@ -43,12 +43,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="area">Area</label>
     <div class="col-sm-3">
-      <input formControlName="area" type="number" min="1" id="area" class="form-control">
+      <input class="form-control" formControlName="area" id="area" min="1" type="number">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !villaForm.controls.area?.valid
-                && (villaForm.controls.area?.dirty ||villaForm.controls.area?.touched)">
+                && (villaForm.controls.area?.dirty ||villaForm.controls.area?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.area.errors.required">
         Area must be required
       </div>
@@ -60,12 +60,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="cost">Cost</label>
     <div class="col-sm-3">
-      <input formControlName="cost" type="number" id="cost" class="form-control">
+      <input class="form-control" formControlName="cost" id="cost" type="number">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !villaForm.controls.cost?.valid
-                && (villaForm.controls.cost?.dirty ||villaForm.controls.cost?.touched)">
+                && (villaForm.controls.cost?.dirty ||villaForm.controls.cost?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.cost.errors.required">
         Cost must be required
       </div>
@@ -77,12 +77,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="maxPeople">Max People Allow</label>
     <div class="col-sm-3">
-      <input formControlName="maxPeople" type="number" id="maxPeople" class="form-control">
+      <input class="form-control" formControlName="maxPeople" id="maxPeople" type="number">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !villaForm.controls.maxPeople?.valid
-                && (villaForm.controls.maxPeople?.dirty ||villaForm.controls.maxPeople?.touched)">
+                && (villaForm.controls.maxPeople?.dirty ||villaForm.controls.maxPeople?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.maxPeople.errors.required">
         Max People must be required
       </div>
@@ -94,12 +94,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="floor">Floor</label>
     <div class="col-sm-3">
-      <input formControlName="floor" type="number" id="floor" class="form-control">
+      <input class="form-control" formControlName="floor" id="floor" type="number">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !villaForm.controls.floor?.valid
-                && (villaForm.controls.floor?.dirty ||villaForm.controls.floor?.touched)">
+                && (villaForm.controls.floor?.dirty ||villaForm.controls.floor?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.floor.errors.required">
         Floor must be required
       </div>
@@ -111,12 +111,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="otherConvenient">Other Convenient</label>
     <div class="col-sm-6">
-      <input formControlName="otherConvenient" type="text" id="otherConvenient" class="form-control">
+      <input class="form-control" formControlName="otherConvenient" id="otherConvenient" type="text">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !villaForm.controls.otherConvenient?.valid
-                && (villaForm.controls.otherConvenient?.dirty ||villaForm.controls.otherConvenient?.touched)">
+                && (villaForm.controls.otherConvenient?.dirty ||villaForm.controls.otherConvenient?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.otherConvenient.errors.required">
         Other Convenient must be required
       </div>
@@ -125,12 +125,12 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="poolArea">Pool Area</label>
     <div class="col-sm-3">
-      <input formControlName="poolArea" type="text" id="poolArea" class="form-control">
+      <input class="form-control" formControlName="poolArea" id="poolArea" type="text">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !villaForm.controls.poolArea?.valid
-                && (villaForm.controls.poolArea?.dirty ||villaForm.controls.poolArea?.touched)">
+                && (villaForm.controls.poolArea?.dirty ||villaForm.controls.poolArea?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.poolArea.errors.required">
         Pool Area must be required
       </div>
@@ -142,31 +142,31 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="standardRoom">Room Standard</label>
     <div class="col-sm-3">
-      <input formControlName="standardRoom" type="text" id="standardRoom" class="form-control">
+      <input class="form-control" formControlName="standardRoom" id="standardRoom" type="text">
     </div>
-    <div class="text-small text-danger"
-         *ngIf="
+    <div *ngIf="
                 !villaForm.controls.standardRoom?.valid
-                && (villaForm.controls.standardRoom?.dirty ||villaForm.controls.standardRoom?.touched)">
+                && (villaForm.controls.standardRoom?.dirty ||villaForm.controls.standardRoom?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.standardRoom.errors.required">
         Room Standard must be required
       </div>
     </div>
   </div>
 
-  <div class="form-group row" >
+  <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="rentType">Rent Type</label>
     <div class="col-sm-3">
-      <select formControlName="rentType" class="custom-select" id="rentType">
+      <select class="custom-select" formControlName="rentType" id="rentType">
         <option [ngValue]="null">---Choose Rent Type---</option>
-        <option [ngValue]="rt" *ngFor="let rt of rentTypes">
+        <option *ngFor="let rt of rentTypes" [ngValue]="rt">
           {{rt.name}}
         </option>
       </select>
     </div>
-    <div class="text-small text-danger"
-         *ngIf="!villaForm.controls.rentType?.valid
-                  && (villaForm.controls.rentType?.dirty ||villaForm.controls.rentType?.touched)">
+    <div *ngIf="!villaForm.controls.rentType?.valid
+                  && (villaForm.controls.rentType?.dirty ||villaForm.controls.rentType?.touched)"
+         class="text-small text-danger">
       <div [hidden]="!villaForm.controls.rentType?.errors.required">
         Rent Type must be required
       </div>
@@ -174,13 +174,13 @@
   </div>
 
   <div class="d-none">
-    <input type="hidden" formControlName="facilityType">
+    <input formControlName="facilityType" type="hidden">
   </div>
-  <input type="hidden" formControlName="img">
+  <input formControlName="img" type="hidden">
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right"></label>
     <div class="col-sm-3">
-      <button type="submit" class="btn btn-success" [disabled]="!villaForm.valid">Submit</button>
+      <button [disabled]="!villaForm.valid" class="btn btn-success" type="submit">Submit</button>
     </div>
   </div>
 </form>
