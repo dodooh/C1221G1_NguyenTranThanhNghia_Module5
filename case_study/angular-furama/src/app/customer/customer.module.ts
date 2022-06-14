@@ -6,6 +6,7 @@ import {CustomerUpdateComponent} from './customer-update/customer-update.compone
 import {CustomerCreateComponent} from './customer-create/customer-create.component';
 import {CustomerListComponent} from './customer-list/customer-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,6 +15,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     CustomerRoutingModule,
     ReactiveFormsModule,
-  ]
+    SharedModule
+  ],
+
 })
 export class CustomerModule { }

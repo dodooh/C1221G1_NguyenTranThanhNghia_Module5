@@ -13,6 +13,7 @@ import {FacilityUpdateHouseComponent} from "./facility-update/facility-update-ho
 import {FacilityUpdateRoomComponent} from "./facility-update/facility-update-room/facility-update-room.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppModule} from "../app.module";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {AppModule} from "../app.module";
     CommonModule,
     FacilityRoutingModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class FacilityModule { }
