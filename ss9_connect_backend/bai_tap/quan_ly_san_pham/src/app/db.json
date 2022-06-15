@@ -1,0 +1,45 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "IPhone 12",
+      "price": 2400000,
+      "description": "New",
+      "category": {
+        "id": 1,
+        "name": "Mobile Phone"
+      }
+    },
+    {
+      "id": 2,
+      "name": "IPhone 11",
+      "price": 1560000,
+      "description": "Like new",
+      "category": {
+        "id": 1,
+        "name": "Mobile Phone"
+      }
+    },
+    {
+      "id": 4,
+      "name": "IPhone 8",
+      "price": 7540000,
+      "description": "98%",
+      "category": {
+        "id": 1,
+        "name": "Mobile Phone"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Phone 15",
+      "price": 9999999,
+      "description": "New 100%",
+      "category": {
+        "id": 1,
+        "name": "Mobile Phone"
+      }
+    }
+  ],
+  "categories": []
+}

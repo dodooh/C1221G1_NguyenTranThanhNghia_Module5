@@ -58,7 +58,6 @@ export class CustomerUpdateComponent implements OnInit {
   }
 
   onSubmit(customerForm: FormGroup) {
-    // this.customerService.updateCustomerToObjectTs(customerForm.value);
     this.customerRestService.updateCustomer(this.customerIdFromRoute, this.customerForm.value).subscribe(
       res => this.route.navigate(['/customer']),
       err => console.log(err)

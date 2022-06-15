@@ -1,0 +1,15 @@
+<h1>Danh sách Danh muc</h1>
+<table>
+    <tr>
+        <td>STT</td>
+        <td>Tên</td>
+    </tr>
+    <tr *ngFor="let category of categories; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ category.name }}</td>
+        <td>
+            <a [routerLink]="['/category/edit', category.id]">Sửa</a>
+            <a [routerLink]="['/category/delete', category.id]">Xóa</a>
+        </td>
+    </tr>
+</table>

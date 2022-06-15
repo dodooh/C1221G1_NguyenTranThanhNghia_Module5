@@ -45,15 +45,15 @@
     {
       "id": "KH-0004",
       "name": "Nguyen Van D",
-      "gender": "1",
       "dayOfBirth": "1990-02-02",
-      "nationalId": "0987878987",
+      "gender": "1",
+      "nationalId": "087878987",
+      "phone": "(+84)901231231",
       "address": "Da Nang",
-      "phone": "0123456789",
       "mail": "codegym2022@codegym.com",
       "customerType": {
-        "id": 3,
-        "name": "Gold"
+        "id": 4,
+        "name": "Silver"
       }
     },
     {

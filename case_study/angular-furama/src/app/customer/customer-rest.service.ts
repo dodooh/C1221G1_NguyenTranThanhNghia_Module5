@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Customer} from '../model/customer';
-import {Observable} from "rxjs";
-import {CustomerType} from "../model/customer-type";
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,7 @@ export class CustomerRestService {
   }
 
   createCustomer(customer: any) {
-    return this.httpClient.post<any>(this.baseUrl, customer);
+    return this.httpClient.post<any>(this.baseUrl, customer, {headers : this.httpOptions});
   }
   getCustomerById(id: string): Observable<Customer> {
     const url = `${this.baseUrl}/${id}`;
@@ -30,10 +29,10 @@ export class CustomerRestService {
   }
   updateCustomer(id: string, customer: any) {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.put<any>(url, customer);
+    return this.httpClient.put<any>(url, customer, {headers : this.httpOptions});
   }
   deleteCustomer(id: string) {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.delete<any>(url);
+    return this.httpClient.delete<any>(url, {headers : this.httpOptions});
   }
 }
