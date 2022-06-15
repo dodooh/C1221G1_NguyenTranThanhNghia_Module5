@@ -13,7 +13,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 import { CategoryDeleteComponent } from './category/category-delete/category-delete.component';
-
+import {NgxPaginationModule} from "ngx-pagination";
 const routes: Routes = [
     {
         path     : '',
@@ -56,6 +56,7 @@ const routes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        NgxPaginationModule,
         RouterModule.forRoot(routes),
     ],
     declarations: [

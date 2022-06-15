@@ -1,0 +1,13 @@
+.container{
+  max-width: 450px;
+}
+li.list-group-item{
+  background-color: #423a6f;
+  color: #F8F9FA;
+}
+
+.done {
+  color: #8d8d8d !important;
+  text-decoration-line: line-through;
+}
+
