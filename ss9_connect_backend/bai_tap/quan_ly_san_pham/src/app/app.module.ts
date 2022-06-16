@@ -14,61 +14,24 @@ import { CategoryCreateComponent } from './category/category-create/category-cre
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 import { CategoryDeleteComponent } from './category/category-delete/category-delete.component';
 import {NgxPaginationModule} from "ngx-pagination";
-const routes: Routes = [
-    {
-        path     : '',
-        redirectTo: 'product/list',
-        pathMatch: 'full'
-    },
-    {
-        path     : 'product/list',
-        component: ProductListComponent,
-    },
-    {
-        path     : 'product/create',
-        component: ProductCreateComponent,
-    },
-    {
-        path     : 'product/edit/:productId',
-        component: ProductUpdateComponent,
-    },
-    {
-        path     : 'category/list',
-        component: CategoryListComponent,
-    },
-    {
-        path     : 'category/create',
-        component: CategoryCreateComponent,
-    },
-    {
-        path     : 'category/edit/:id',
-        component: CategoryEditComponent,
-    },
-    {
-        path     : 'category/delete/:id',
-        component: CategoryDeleteComponent,
-    }
-];
+import { AppRoutingModule } from './app-routing.module';
+import {ProductModule} from "./product/product.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
-    imports     : [
+    imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         NgxPaginationModule,
-        RouterModule.forRoot(routes),
+        AppRoutingModule,
+        ProductModule,
+        SharedModule,
     ],
     declarations: [
         AppComponent,
         HelloComponent,
-        ProductListComponent,
-        ProductCreateComponent,
-        ProductUpdateComponent,
-        CategoryListComponent,
-        CategoryCreateComponent,
-        CategoryEditComponent,
-        CategoryDeleteComponent,
     ],
     bootstrap   : [AppComponent],
 })
