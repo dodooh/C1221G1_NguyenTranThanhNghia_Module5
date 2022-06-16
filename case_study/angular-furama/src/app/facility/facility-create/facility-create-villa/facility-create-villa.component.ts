@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {rentTypes} from '../../../../assets/data/rentTypeList';
 import {positive_number} from '../../../positive-number.validator';
-import {FacilityService} from '../../facility.service';
 import {Router} from '@angular/router';
-import {FacilityTypeService} from '../../facility-type.service';
+import {FacilityRestService} from '../../facility-rest.service';
+import {FacilityTypeRestService} from "../../facility-type-rest.service";
+import {FacilityType} from "../../../model/facility-type";
 
 @Component({
   selector   : 'app-facility-create-villa',
@@ -19,10 +20,16 @@ export class FacilityCreateVillaComponent implements OnInit {
   isLoading = false;
   rentTypes = rentTypes;
   villaForm: FormGroup;
+  facilityType: FacilityType;
 
   constructor(private route: Router,
-              private facilityService: FacilityService,
-              private facilityTypeService: FacilityTypeService) {
+              private facilityRestService: FacilityRestService,
+              private facilityTypeRestService: FacilityTypeRestService) {
+    this.facilityTypeRestService.getByID(1).subscribe(
+      data => {
+        this.facilityType = data;
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -36,24 +43,29 @@ export class FacilityCreateVillaComponent implements OnInit {
       otherConvenient: new FormControl('', [Validators.required]),
       poolArea       : new FormControl('', [Validators.required, positive_number]),
       standardRoom   : new FormControl('', [Validators.required]),
-      facilityType   : new FormControl(this.facilityTypeService.findById(1), [Validators.required]),
       rentType       : new FormControl(null, [Validators.required]),
       img            : new FormControl('hotel.jpg', [Validators.required])
     });
   }
 
   onSubmit() {
-    console.log(this.villaForm.value);
-    this.facilityService.save(this.villaForm.value);
-    this.isLoading = true;
-    const interval = setInterval(() => {
-      this.progress += 23;
-      if (this.progress > 100) {
-        clearInterval(interval);
-        this.route.navigate(['/facility']);
-
-      }
-    }, 400);
-
+    if (this.villaForm.valid) {
+      const villa = this.villaForm.value;
+      villa.facilityType = this.facilityType;
+      this.facilityRestService.postFacility(villa).subscribe(
+        () => {
+        }, () => {
+        }, () => {
+          this.isLoading = true;
+          const interval = setInterval(() => {
+            this.progress += 23;
+            if (this.progress > 100) {
+              clearInterval(interval);
+              this.route.navigate(['/facility']);
+            }
+          }, 400);
+        }
+      );
+    }
   }
 }

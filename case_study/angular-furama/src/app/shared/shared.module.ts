@@ -5,12 +5,15 @@ import {ModalDeleteComponent} from './modal-delete/modal-delete.component';
 
 
 @NgModule({
-  declarations: [ModalDeleteComponent, ModalCustomerDetailComponent],
+  declarations: [
+    ModalDeleteComponent,
+    ModalCustomerDetailComponent],
   imports     : [
     CommonModule
   ],
   exports     : [
-    ModalDeleteComponent, ModalCustomerDetailComponent
+    ModalDeleteComponent,
+    ModalCustomerDetailComponent
   ]
 })
 export class SharedModule {

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FacilityService} from '../../facility/facility.service';
-import {CustomerService} from '../../customer/customer.service';
 import {Facility} from '../../model/facility';
 import {Customer} from '../../model/customer';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ContractService} from '../contract.service';
 import {Router} from '@angular/router';
+import {CustomerRestService} from '../../customer/customer-rest.service';
+import {ContractRestService} from '../contract-rest.service';
+import {FacilityRestService} from "../../facility/facility-rest.service";
 
 @Component({
   selector   : 'app-contract-create',
@@ -18,12 +18,16 @@ export class ContractCreateComponent implements OnInit {
   facilities: Facility[];
   contractForm: FormGroup;
 
-  constructor(private facilityService: FacilityService,
-              private customerService: CustomerService,
-              private contractService: ContractService,
+  constructor(private facilityRestService: FacilityRestService,
+              private customerRestService: CustomerRestService,
+              private contractRestService: ContractRestService,
               private route: Router) {
-    this.customers = customerService.getCustomerListByObjectTS();
-    this.facilities = facilityService.findAll();
+    customerRestService.getCustomers().subscribe(
+      data => this.customers = data
+    );
+    facilityRestService.getFacilities().subscribe(
+      data => this.facilities = data
+    );
   }
 
   ngOnInit(): void {
@@ -37,7 +41,12 @@ export class ContractCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.contractService.save(this.contractForm.value);
-    this.route.navigate(['/contract']);
+    this.contractRestService.postContract(this.contractForm.value).subscribe(
+      () => {
+      }, () => {
+      }, () => {
+        this.route.navigate(['/contract']);
+      }
+    );
   }
 }

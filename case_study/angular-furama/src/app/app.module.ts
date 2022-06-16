@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {SharedModule} from './shared/shared.module';
 import {HeaderComponent} from './header/header.component';
 import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,9 @@ import {NavigationBarComponent} from './navigation-bar/navigation-bar.component'
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
-    ReactiveFormsModule
+    NgxPaginationModule
   ],
   providers   : [],
   bootstrap   : [AppComponent]

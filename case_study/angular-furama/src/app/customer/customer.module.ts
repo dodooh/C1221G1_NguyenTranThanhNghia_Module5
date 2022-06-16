@@ -7,6 +7,7 @@ import {CustomerCreateComponent} from './customer-create/customer-create.compone
 import {CustomerListComponent} from './customer-list/customer-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {SharedModule} from '../shared/shared.module';
     CustomerRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    NgxPaginationModule
   ],
 
 })

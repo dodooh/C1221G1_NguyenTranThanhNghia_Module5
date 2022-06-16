@@ -45,22 +45,23 @@ export class CustomerUpdateComponent implements OnInit {
     if (!this.customerIdFromRoute) {
       this.route.navigate(['/error']);
     }
-    console.log(this.customerIdFromRoute);
+    this.customerTypeRestService.getCustomerTypes().subscribe(
+      res => this.customerTypes = res,
+    );
     this.customerRestService.getCustomerById(this.customerIdFromRoute).subscribe(
       res => {
         this.customerForm.setValue(res);
       },
     );
-    this.customerTypeRestService.getCustomerTypes().subscribe(
-      res => this.customerTypes = res,
-    );
+
 
   }
 
   onSubmit(customerForm: FormGroup) {
     this.customerRestService.updateCustomer(this.customerIdFromRoute, this.customerForm.value).subscribe(
-      res => this.route.navigate(['/customer']),
-      err => console.log(err)
+      res => {},
+      err => console.log(err),
+      () => this.route.navigate(['/customer'])
     );
 
   }

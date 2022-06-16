@@ -4,8 +4,9 @@ import {positive_number} from '../../../positive-number.validator';
 import {Facility} from '../../../model/facility';
 import {rentTypes} from '../../../../assets/data/rentTypeList';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FacilityService} from '../../facility.service';
-import {FacilityTypeService} from '../../facility-type.service';
+import {FacilityTypeRestService} from '../../facility-type-rest.service';
+import {FacilityRestService} from '../../facility-rest.service';
+import {FacilityType} from '../../../model/facility-type';
 
 @Component({
   selector   : 'app-facility-update-room',
@@ -17,11 +18,17 @@ export class FacilityUpdateRoomComponent implements OnInit {
   rentTypes = rentTypes;
   facility: Facility;
   roomForm: FormGroup;
+  facilityType: FacilityType;
 
   constructor(private activatedRoute: ActivatedRoute,
               private route: Router,
-              private facilityService: FacilityService,
-              private facilityTypeService: FacilityTypeService) {
+              private facilityRestService: FacilityRestService,
+              private facilityTypeRestService: FacilityTypeRestService) {
+    this.facilityTypeRestService.getByID(3).subscribe(
+      data => {
+        this.facilityType = data;
+      }
+    );
   }
 
   equals(itemOne, itemTwo) {
@@ -31,26 +38,39 @@ export class FacilityUpdateRoomComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.activatedRoute.snapshot.paramMap;
     const facilityIdFromRoute = Number(routeParams.get('facilityId'));
-    this.facility = this.facilityService.findByIdAndType(facilityIdFromRoute, 3);
-    if (this.facility === undefined) {
-      this.route.navigate(['/error']);
-    }
-    console.log(this.facility);
-    this.roomForm = new FormGroup({
-      id          : new FormControl(this.facility.id, [Validators.required]),
-      name        : new FormControl(this.facility.name, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      area        : new FormControl(this.facility.area, [Validators.required, positive_number]),
-      cost        : new FormControl(this.facility.cost, [Validators.required, positive_number]),
-      maxPeople   : new FormControl(this.facility.maxPeople, [Validators.required, positive_number]),
-      freeService : new FormControl(this.facility.freeService, [Validators.required]),
-      facilityType: new FormControl(this.facilityTypeService.findById(3), [Validators.required]),
-      rentType    : new FormControl(this.facility.rentType, [Validators.required]),
-      img         : new FormControl('room.jpg ', [Validators.required])
-    });
+    this.facilityRestService.findByIdAndType(facilityIdFromRoute, 3).subscribe(
+      res => {
+        this.facility = res[0];
+        console.log(res[0]);
+        this.roomForm = new FormGroup({
+          id         : new FormControl(this.facility?.id, [Validators.required]),
+          name       : new FormControl(this.facility?.name, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+          area       : new FormControl(this.facility?.area, [Validators.required, positive_number]),
+          cost       : new FormControl(this.facility?.cost, [Validators.required, positive_number]),
+          maxPeople  : new FormControl(this.facility?.maxPeople, [Validators.required, positive_number]),
+          freeService: new FormControl(this.facility?.freeService, [Validators.required]),
+          rentType   : new FormControl(this.facility.rentType, [Validators.required]),
+          img        : new FormControl('room.jpg ', [Validators.required])
+        });
+      },
+      err => {
+        this.route.navigate(['/error']);
+      }
+    );
+
   }
 
   onSubmit() {
-    this.facilityService.update(this.roomForm.value);
-    this.route.navigate(['/facility']);
+    if (this.roomForm.valid) {
+      const room = this.roomForm.value;
+      room.facilityType = this.facilityType;
+      this.facilityRestService.updateFacility(room).subscribe(
+        () => {
+        }, () => {
+        }, () => {
+          this.route.navigate(['/facility']);
+        }
+      );
+    }
   }
 }

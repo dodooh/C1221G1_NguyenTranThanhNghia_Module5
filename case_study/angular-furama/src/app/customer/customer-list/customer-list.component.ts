@@ -15,7 +15,7 @@ export class CustomerListComponent implements OnInit {
   nameCustomerToDelete: string;
   idCustomerToDelete: string;
   customerPassToModal: Customer;
-
+  page = 1;
   constructor(private route: Router,
               private shareService: ShareService,
               private customerRestService: CustomerRestService) {
@@ -23,7 +23,10 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareService.emitChange('Customer');
-    // this.findAll();
+    this.findAll();
+  }
+
+  private findAll() {
     this.customerRestService.getCustomers().subscribe(
       (response) => {
         this.customers = response;
@@ -33,11 +36,6 @@ export class CustomerListComponent implements OnInit {
       }
     );
   }
-
-
-  // findAll() {
-  //   this.customers = this.customerService.getCustomerListByObjectTS();
-  // }
 
   showMessageDelete(name: string, id: string) {
     this.nameCustomerToDelete = name;
@@ -49,14 +47,10 @@ export class CustomerListComponent implements OnInit {
     this.customerRestService.deleteCustomer(id).subscribe(
       res => {
         console.log(res);
-        this.ngOnInit();
+        this.findAll();
       },
       err => console.log(err)
     );
-
-    // this.customerService.deleteCustomerToObjectTS(id);
-    //
-    // this.findAll();
   }
 
   passCustomerToModal(customer: any) {

@@ -41,7 +41,14 @@ export class FacilityListComponent implements OnInit {
   }
 
   deleteFacility(id) {
-    // this.facilityService.remove(id);
-    // this.facilities = this.facilityService.findAll();
+    // TODO them findById truoc khi xoa
+    this.facilityRestService.deleteFacility(id).subscribe(
+      res => {
+        this.getList();
+        console.log('REST DELETE facilities success');
+      }, err => {
+        console.log(err);
+      }
+    );
   }
 }

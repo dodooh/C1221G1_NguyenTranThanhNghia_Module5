@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {positive_number} from '../../../positive-number.validator';
-import {FacilityService} from '../../facility.service';
 import {rentTypes} from '../../../../assets/data/rentTypeList';
 import {Router} from '@angular/router';
-import {FacilityTypeService} from "../../facility-type.service";
+import {FacilityTypeService} from '../../facility-type.service';
+import {FacilityRestService} from '../../facility-rest.service';
+import {FacilityTypeRestService} from '../../facility-type-rest.service';
+import {FacilityType} from '../../../model/facility-type';
 
 @Component({
   selector   : 'app-facility-create-house',
@@ -14,10 +16,15 @@ import {FacilityTypeService} from "../../facility-type.service";
 export class FacilityCreateHouseComponent implements OnInit {
   houseForm: FormGroup;
   rentTypes = rentTypes;
-
+  facilityType: FacilityType;
   constructor(private route: Router,
-              private facilityService: FacilityService,
-              private facilityTypeService: FacilityTypeService) {
+              private facilityRestService: FacilityRestService,
+              private facilityTypeRestService: FacilityTypeRestService) {
+    this.facilityTypeRestService.getByID(2).subscribe(
+      data => {
+        this.facilityType = data;
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -30,15 +37,22 @@ export class FacilityCreateHouseComponent implements OnInit {
       floor          : new FormControl('', [Validators.required, positive_number]),
       otherConvenient: new FormControl('', [Validators.required]),
       standardRoom   : new FormControl('', [Validators.required]),
-      facilityType   : new FormControl(this.facilityTypeService.findById(2), [Validators.required]),
       rentType       : new FormControl(null, [Validators.required]),
       img            : new FormControl('studio.jpeg', [Validators.required])
     });
   }
 
   onSubmit() {
-    console.log(this.houseForm.value);
-    this.facilityService.save(this.houseForm.value);
-    this.route.navigate(['/facility']);
+    if (this.houseForm.valid) {
+      const house = this.houseForm.value;
+      house.facilityType = this.facilityType;
+      this.facilityRestService.postFacility(house).subscribe(
+        () => {
+        }, () => {
+        }, () => {
+          this.route.navigate(['/facility']);
+        }
+      );
+    }
   }
 }

@@ -1,16 +1,6 @@
 {
   "todos": [
     {
-      "content": "asdadsdaasdasda",
-      "done": true,
-      "id": 7
-    },
-    {
-      "content": "aasd",
-      "done": true,
-      "id": 8
-    },
-    {
       "content": "asdasd",
       "done": false,
       "id": 9

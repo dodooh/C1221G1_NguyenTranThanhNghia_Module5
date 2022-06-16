@@ -48,14 +48,14 @@ export class CustomerCreateComponent implements OnInit {
 
   onSubmit(customerForm: FormGroup) {
     console.log(customerForm);
-    // this.customerService.addCustomerToObjectTS(customerForm.value);
     this.customerRestService.createCustomer(customerForm.value).subscribe(
       res => {
         console.log(res);
       }, err => {
         console.log(err);
+      }, () => {
+        this.router.navigate(['/customer']);
       }
     );
-    this.router.navigate(['/customer']);
   }
 }

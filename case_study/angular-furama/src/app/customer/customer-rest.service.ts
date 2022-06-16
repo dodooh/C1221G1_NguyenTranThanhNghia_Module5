@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Customer} from '../model/customer';
 import {Observable} from 'rxjs';
+import {environment} from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerRestService {
   httpOptions: any;
-  private baseUrl = 'http://localhost:5000/customers';
+  private baseUrl = `${environment.API_URL}/customers`;
 
   constructor(private httpClient: HttpClient) {
     this.httpOptions = {

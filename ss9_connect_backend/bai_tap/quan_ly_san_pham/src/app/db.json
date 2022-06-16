@@ -91,5 +91,10 @@
       }
     }
   ],
-  "categories": []
+  "categories": [
+    {
+      "id": 1,
+      "name": "Mobile Phone"
+    }
+  ]
 }

@@ -57,20 +57,6 @@
       }
     },
     {
-      "id": "KH-1211",
-      "name": "John Washington",
-      "dayOfBirth": "2022-06-02",
-      "gender": "1",
-      "nationalId": "999999999",
-      "phone": "0915151766",
-      "address": "Beijin1",
-      "mail": "123150071@sv.dut.edu.vn",
-      "customerType": {
-        "id": 3,
-        "name": "Gold"
-      }
-    },
-    {
       "id": "KH-7811",
       "name": "Nguyen Van T",
       "dayOfBirth": "2022-06-25",
@@ -83,6 +69,34 @@
         "id": 1,
         "name": "Diamond"
       }
+    },
+    {
+      "id": "KH-1229",
+      "name": "John Washington",
+      "dayOfBirth": "2022-06-02",
+      "gender": "1",
+      "nationalId": "999992344",
+      "phone": "0911151232",
+      "address": "Beijin11",
+      "mail": "123150071@sv.dut.edu.vn",
+      "customerType": {
+        "id": 4,
+        "name": "Silver"
+      }
+    },
+    {
+      "id": "KH-1311",
+      "name": "John Washington",
+      "dayOfBirth": "2022-06-03",
+      "gender": "1",
+      "nationalId": "999992344",
+      "phone": "0915151766",
+      "address": "Hanoi1",
+      "mail": "nguyen2697s@gmail.com",
+      "customerType": {
+        "id": 4,
+        "name": "Silver"
+      }
     }
   ],
   "facilities": [
@@ -90,38 +104,38 @@
       "id": 1,
       "name": "Ocean Villa",
       "area": 140,
-      "cost": 89,
+      "cost": 894,
       "maxPeople": 4,
-      "facilityType": {
-        "id": 1,
-        "name": "Villa"
-      },
-      "standardRoom": "5 star",
+      "floor": 3,
       "otherConvenient": "Sea View",
       "poolArea": 30,
-      "floor": 3,
+      "standardRoom": "5 star",
       "rentType": {
         "id": 3,
         "name": "year"
       },
-      "img": "hotel.jpg"
+      "img": "hotel.jpg",
+      "facilityType": {
+        "id": 1,
+        "name": "Villa"
+      }
     },
     {
       "id": 2,
       "name": "Rose Room",
       "area": 40,
-      "cost": 32,
+      "cost": 326,
       "maxPeople": 2,
-      "facilityType": {
-        "id": 3,
-        "name": "Room"
-      },
       "freeService": "Maxxage",
       "rentType": {
         "id": 1,
         "name": "day"
       },
-      "img": "room.jpg"
+      "img": "room.jpg ",
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      }
     },
     {
       "id": 3,
@@ -197,6 +211,45 @@
         "name": "day"
       },
       "img": "room.jpg"
+    },
+    {
+      "id": 9,
+      "name": "dodooh",
+      "area": 90,
+      "cost": 567,
+      "maxPeople": 5,
+      "floor": 10,
+      "otherConvenient": "AN VA Choi",
+      "poolArea": "1",
+      "standardRoom": "1",
+      "facilityType": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "month"
+      },
+      "img": "hotel.jpg"
+    },
+    {
+      "id": 9,
+      "name": "House Couple",
+      "area": 90,
+      "cost": 12,
+      "maxPeople": 11,
+      "floor": 11,
+      "otherConvenient": "11",
+      "standardRoom": "11",
+      "rentType": {
+        "id": 2,
+        "name": "month"
+      },
+      "img": "studio.jpeg",
+      "facilityType": {
+        "id": 2,
+        "name": "House"
+      }
     }
   ],
   "contracts": [
@@ -414,6 +467,34 @@
     {
       "id": 5,
       "name": "Member"
+    }
+  ],
+  "facility-types": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room"
+    }
+  ],
+  "rent-types": [
+    {
+      "id": 1,
+      "name": "day"
+    },
+    {
+      "id": 2,
+      "name": "month"
+    },
+    {
+      "id": 3,
+      "name": "year"
     }
   ]
 }

@@ -5,6 +5,11 @@ Accept: application/json
 GET http://localhost:5000/facilities
 Accept: application/json
 
+
+###
+GET http://localhost:5000/facilities?id=20&facilityType.id=1
+Accept: application/json
+
 ###
 GET http://localhost:5000/customer-types
 Accept: application/json
