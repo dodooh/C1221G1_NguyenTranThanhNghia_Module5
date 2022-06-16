@@ -13,26 +13,10 @@
     <h2>Update Customer</h2>
   </div>
 </div>
-<form (ngSubmit)="onSubmit(customerForm)" [formGroup]="customerForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="customerForm">
   <!--  {{ customerForm.value | json }}-->
-  <div class="form-group row">
-    <label class="col-sm-3 col-form-label text-right" for="id">ID</label>
-    <div class="col-sm-3">
-      <input class="form-control" formControlName="id" id="id"
-             placeholder="KH-1234" type="text">
-    </div>
-    <div *ngIf="
-      !customerForm.controls.id?.valid
-      && (customerForm.controls.id?.dirty ||customerForm.controls.id?.touched)"
-         class="text-small text-danger">
-      <div [hidden]="!customerForm.controls.id.errors.required">
-        ID must be required
-      </div>
-      <div [hidden]="!customerForm.controls.id.errors.pattern">
-        ID pattern fail (KH-XXXX)
-      </div>
-    </div>
-  </div>
+  <input class="form-control" formControlName="id" id="id"
+         placeholder="KH-1234" type="hidden">
   <div class="form-group row">
     <label class="col-sm-3 col-form-label text-right" for="name">Customer Name</label>
     <div class="col-sm-6">
@@ -52,11 +36,11 @@
     <label class="col-sm-3 col-form-label text-right">Gender</label>
     <div class="col-sm-1">
       <div class="form-check">
-        <input class="form-check-input" formControlName="gender" id="MaleRadio" type="radio" value="1">
+        <input class="form-check-input" formControlName="gender" id="MaleRadio" type="radio" [value]="1">
         <label class="form-check-label" for="MaleRadio">Male</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" formControlName="gender" id="FemaleRadio" type="radio" value="0">
+        <input class="form-check-input" formControlName="gender" id="FemaleRadio" type="radio" [value]="0">
         <label class="form-check-label" for="FemaleRadio">Female</label>
       </div>
     </div>
@@ -160,7 +144,7 @@
     <div class="col-sm-3">
       <select [compareWith]="compareByID" class="custom-select" formControlName="customerType" id="customerType">
         <option *ngFor="let ct of customerTypes" [ngValue]="ct">
-          {{ct.name}}
+          {{ct.customerTypeName}}
         </option>
       </select>
     </div>

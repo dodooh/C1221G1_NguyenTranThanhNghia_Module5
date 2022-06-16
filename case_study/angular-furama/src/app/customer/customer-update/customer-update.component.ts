@@ -5,6 +5,7 @@ import {Customer} from '../../model/customer';
 import {CustomerRestService} from '../customer-rest.service';
 import {CustomerTypeRestService} from '../customer-type-rest.service';
 import {CustomerType} from '../../model/customer-type';
+import { customerTypes } from 'src/assets/data/customerTypeList';
 
 @Component({
   selector   : 'app-customer-update',
@@ -14,9 +15,9 @@ import {CustomerType} from '../../model/customer-type';
 export class CustomerUpdateComponent implements OnInit {
   customer: Customer;
   customerIdFromRoute: string;
-  customerTypes: CustomerType[];
+  customerTypes: CustomerType[] = customerTypes;
   customerForm: FormGroup = new FormGroup({
-    id          : new FormControl('', [Validators.required, Validators.pattern('^KH-\\d{4}$')]),
+    id          : new FormControl('', ),
     name        : new FormControl('', [Validators.required]),
     dayOfBirth  : new FormControl('', [Validators.required, Validators.pattern('^\\d{4}-\\d{2}-\\d{2}$')]),
     gender      : new FormControl('', [Validators.required]),
@@ -45,9 +46,9 @@ export class CustomerUpdateComponent implements OnInit {
     if (!this.customerIdFromRoute) {
       this.route.navigate(['/error']);
     }
-    this.customerTypeRestService.getCustomerTypes().subscribe(
-      res => this.customerTypes = res,
-    );
+    // this.customerTypeRestService.getCustomerTypes().subscribe(
+    //   res => this.customerTypes = res,
+    // );
     this.customerRestService.getCustomerById(this.customerIdFromRoute).subscribe(
       res => {
         this.customerForm.setValue(res);
@@ -57,8 +58,8 @@ export class CustomerUpdateComponent implements OnInit {
 
   }
 
-  onSubmit(customerForm: FormGroup) {
-    this.customerRestService.updateCustomer(this.customerIdFromRoute, this.customerForm.value).subscribe(
+  onSubmit() {
+    this.customerRestService.updateCustomer(this.customerForm.value).subscribe(
       res => {},
       err => console.log(err),
       () => this.route.navigate(['/customer'])

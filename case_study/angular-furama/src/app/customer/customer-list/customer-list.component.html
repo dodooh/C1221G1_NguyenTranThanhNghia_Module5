@@ -24,7 +24,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let customer of customers |paginate : { itemsPerPage: 5, currentPage: page }; index as idx">
+<!--  |paginate : { itemsPerPage: 5, currentPage: page }-->
+  <tr *ngFor="let customer of customers ; index as idx">
     <td>{{ idx + 1 }}</td>
     <td>{{ customer.id }}</td>
     <td>{{ customer.name }}</td>
@@ -37,7 +38,7 @@
     <td>{{ customer.phone }}</td>
     <!--    <td>{{ customer.address }}</td>-->
     <td>{{ customer.mail }}</td>
-    <td>{{ customer.customerType.name }}</td>
+    <td>{{ customer.customerType.customerTypeName }}</td>
     <td>
       <button (click)="passCustomerToModal(customer)" class="btn btn-outline-info"
               data-target="#detailModal" data-toggle="modal"
@@ -58,9 +59,9 @@
   </tr>
   </tbody>
 </table>
-<div style="justify-content: space-around;display: flex;">
-  <pagination-controls (pageChange)="page = $event" class=" page-item"></pagination-controls>
-</div>
+<!--<div style="justify-content: space-around;display: flex;">-->
+<!--  <pagination-controls (pageChange)="page = $event" class=" page-item"></pagination-controls>-->
+<!--</div>-->
 
 <app-modal-delete (confirmDelete)="deleteCustomer($event)" [idDelete]="idCustomerToDelete"
                   [messageDelete]="nameCustomerToDelete"></app-modal-delete>

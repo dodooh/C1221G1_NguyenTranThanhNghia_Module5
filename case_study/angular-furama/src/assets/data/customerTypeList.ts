@@ -1,22 +1,22 @@
 export const customerTypes = [
   {
     id  : 1,
-    name: 'Diamond'
+    customerTypeName: 'Diamond'
   },
   {
     id: 2,
-    name: 'Platinum'
+    customerTypeName: 'Platinum'
   },
   {
     id: 3,
-    name: 'Gold'
+    customerTypeName: 'Gold'
   },
   {
     id: 4,
-    name: 'Silver'
+    customerTypeName: 'Silver'
   },
   {
     id: 5,
-    name: 'Member'
+    customerTypeName: 'Member'
   }
 ];
