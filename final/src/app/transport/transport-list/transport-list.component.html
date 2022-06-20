@@ -1,0 +1,78 @@
+<div class="my-3">
+  <div class="d-flex justify-content-between">
+    <a class="btn btn-info" routerLink="/create">Add New</a>
+    <div class="d-flex">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-0">
+  <table class="table table-bordered table-light table-striped table-hover">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">Transport ID</th>
+      <th scope="col">Type</th>
+      <th scope="col">Company</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Time Start</th>
+      <th scope="col">Time Arrival</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let t of transports">
+      <td>{{t.id}}</td>
+      <td>{{t.type}}</td>
+      <td>{{t.company}}</td>
+      <td>{{t.from}}</td>
+      <td>{{t.to}}</td>
+      <td>{{t.phone}}</td>
+      <td>{{t.email}}</td>
+      <td>{{t.startTime}}</td>
+      <td>{{t.arrivalTime}}</td>
+      <td>
+        <button type="button" [routerLink]="['/update',t.id]" class="btn btn-warning mx-1">
+          <i class='bx bx-cog bx-sx'></i>
+        </button>
+        <button
+          class="btn btn-danger"
+          data-bs-toggle="modal" data-bs-target="#exampleModal"
+          type="button"
+          (click)="setIdToDelete(t)"
+        >
+          <i class='bx bx-trash bx-sx'></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          You Will Remove Transport With ID {{idToDelete}}
+        </p>
+        <strong class="text-danger">
+          DATA WILL BE REMOVED PERMANENTLY! ARE YOU SURE?
+        </strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="deleteTransport()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Confirm
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

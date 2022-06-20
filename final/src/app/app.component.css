@@ -1,0 +1,24 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #D8BBDD;
+  --highlight-color: #ED6E8C;
+  --main-color: #037EB9;
+}
+.btn-info {
+  background-color: var(--main-color) !important;
+  color: white;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #f9aeb3;
+}
+.custom-select.ng-invalid.ng-touched {
+  border: 2px solid red;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #f9aeb3;
+}
+.form-check-input.ng-touched.ng-invalid {
+  border: 2px solid red;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #f9aeb3;
+}
+

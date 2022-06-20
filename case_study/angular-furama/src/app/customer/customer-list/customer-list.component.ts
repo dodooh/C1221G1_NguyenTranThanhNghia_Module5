@@ -15,6 +15,7 @@ export class CustomerListComponent implements OnInit {
   nameCustomerToDelete: string;
   idCustomerToDelete: string;
   customerPassToModal: Customer;
+  showMessage = false;
   page = 1;
   constructor(private route: Router,
               private shareService: ShareService,
@@ -56,4 +57,6 @@ export class CustomerListComponent implements OnInit {
   passCustomerToModal(customer: any) {
     this.customerPassToModal = customer;
   }
+
+
 }

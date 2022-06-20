@@ -1,0 +1,48 @@
+{
+  "transports": [
+    {
+      "id": 1234,
+      "type": "Giường nằm",
+      "company": "Mai Linh",
+      "from": "Đà Nẵng",
+      "to": "Hà Nội",
+      "phone": "0975184759",
+      "email": "mailinh@gmail.com",
+      "startTime": "13:20",
+      "arrivalTime": "11:01"
+    },
+    {
+      "id": 8751,
+      "type": "Ghế ngồi",
+      "company": "Phương Trang",
+      "from": "Đà Nẵng",
+      "to": "Quảng Bình",
+      "phone": "0905995759",
+      "email": "phuongtrang@gmail.com",
+      "startTime": "07:20",
+      "arrivalTime": "12:00"
+    },
+    {
+      "id": 1238,
+      "type": "Giường nằm",
+      "company": "Mai Linh",
+      "from": "Đà Nẵng",
+      "to": "Quảng Trị",
+      "phone": "0935184759",
+      "email": "mailinh@gmail.com",
+      "startTime": "13:20",
+      "arrivalTime": "15:00"
+    },
+    {
+      "id": 7777,
+      "type": "Giường nằm",
+      "company": "Mai Linh",
+      "from": "Đà Nẵng",
+      "to": "Quảng Trị",
+      "phone": "0935184759",
+      "email": "mailinh@gmail.com",
+      "startTime": "13:20",
+      "arrivalTime": "15:00"
+    }
+  ]
+}

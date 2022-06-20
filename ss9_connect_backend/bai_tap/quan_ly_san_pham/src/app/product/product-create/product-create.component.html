@@ -3,19 +3,62 @@
     <table>
         <tr>
             <td>Mã sản phẩm:</td>
-            <td><input type="number" formControlName="id"/></td>
+            <td>
+                <input type="number" formControlName="id"/>
+                <div *ngIf="
+                      !productForm.controls.id?.valid
+                      && (productForm.controls.id?.dirty ||productForm.controls.id?.touched)"
+                     class="text-small text-danger">
+                    <div [hidden]="!productForm.controls.id.errors?.required">
+                        ID must be required
+                    </div>
+                    <div  *ngIf="productForm.get('id').hasError('idAlreadyExists')">
+                        ID has been registered
+                    </div>
+                </div>
+            </td>
         </tr>
         <tr>
             <td>Tên sản phẩm:</td>
-            <td><input type="text" formControlName="name"/></td>
+            <td>
+                <input type="text" formControlName="name"/>
+                <div *ngIf="
+                      !productForm.controls.name?.valid
+                      && (productForm.controls.name?.dirty ||productForm.controls.name?.touched)"
+                     class="text-small text-danger">
+                    <div [hidden]="!productForm.controls.name.errors.required">
+                        name must be required
+                    </div>
+                </div>
+            </td>
         </tr>
         <tr>
             <td>Giá sản phẩm</td>
-            <td><input type="number" formControlName="price"/></td>
+            <td>
+                <input type="number" formControlName="price"/>
+                <div *ngIf="
+                      !productForm.controls.price?.valid
+                      && (productForm.controls.price?.dirty ||productForm.controls.price?.touched)"
+                     class="text-small text-danger">
+                    <div [hidden]="!productForm.controls.price.errors.required">
+                        price must be required
+                    </div>
+                </div>
+            </td>
         </tr>
         <tr>
             <td>Mô tả về sản phẩm</td>
-            <td><input type="text" formControlName="description"/></td>
+            <td>
+                <input type="text" formControlName="description"/>
+                <div *ngIf="
+                      !productForm.controls.description?.valid
+                      && (productForm.controls.description?.dirty ||productForm.controls.description?.touched)"
+                     class="text-small text-danger">
+                    <div [hidden]="!productForm.controls.description.errors.required">
+                        description must be required
+                    </div>
+                </div>
+            </td>
         </tr>
         <tr>
             <td>Danh Muc</td>

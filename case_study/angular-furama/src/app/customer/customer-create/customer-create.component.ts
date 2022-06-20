@@ -11,19 +11,10 @@ import {CustomerRestService} from '../customer-rest.service';
 })
 export class CustomerCreateComponent implements OnInit {
 
-  customer = {
-    id          : '',
-    name        : '',
-    gender      : '',
-    dayOfBirth  : '',
-    nationalId  : '',
-    address     : '',
-    phone       : '',
-    mail        : '',
-    customerType: null
-  };
+
   customerTypes = customerTypes;
   customerForm: FormGroup;
+  showMessage = false;
 
   constructor(
     private router: Router,
@@ -33,29 +24,34 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerForm = new FormGroup({
-      id          : new FormControl(this.customer.id, [Validators.required, Validators.pattern('^KH-\\d{4}$')]),
-      name        : new FormControl(this.customer.name, [Validators.required]),
-      dayOfBirth  : new FormControl(this.customer.dayOfBirth, [Validators.required, Validators.pattern('^\\d{4}-\\d{2}-\\d{2}$')]),
-      gender      : new FormControl(this.customer.gender, [Validators.required]),
-      nationalId  : new FormControl(this.customer.nationalId, [Validators.required, Validators.pattern('^\\d{9}$')]),
-      phone       : new FormControl(this.customer.phone, [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
-      address     : new FormControl(this.customer.address, [Validators.required]),
-      mail        : new FormControl(this.customer.mail, [Validators.required, Validators.email]),
-      customerType: new FormControl(this.customer.customerType, [Validators.required]),
+      id          : new FormControl('', [Validators.required, Validators.pattern('^KH-\\d{4}$')]),
+      name        : new FormControl('', [Validators.required]),
+      dayOfBirth  : new FormControl('', [Validators.required, Validators.pattern('^\\d{4}-\\d{2}-\\d{2}$')]),
+      gender      : new FormControl('', [Validators.required]),
+      nationalId  : new FormControl('', [Validators.required, Validators.pattern('^\\d{9}$')]),
+      phone       : new FormControl('', [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
+      address     : new FormControl('', [Validators.required]),
+      mail        : new FormControl('', [Validators.required, Validators.email]),
+      customerType: new FormControl(null, [Validators.required]),
     });
   }
 
 
-  onSubmit(customerForm: FormGroup) {
-    console.log(customerForm);
-    this.customerRestService.createCustomer(customerForm.value).subscribe(
-      res => {
-        console.log(res);
-      }, err => {
-        console.log(err);
-      }, () => {
-        this.router.navigate(['/customer']);
-      }
-    );
+  onSubmit() {
+    if (this.customerForm.valid) {
+      this.customerRestService.createCustomer(this.customerForm.value).subscribe(
+        res => {
+          console.log(res);
+          this.showMessage = true;
+          this.customerForm.reset();
+        }, err => {
+          console.log(err);
+        }
+      );
+    }
+
+  }
+  hideSuccessMessage() {
+    this.showMessage = false;
   }
 }

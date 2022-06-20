@@ -23,7 +23,9 @@ export class ContractCreateComponent implements OnInit {
               private contractRestService: ContractRestService,
               private route: Router) {
     customerRestService.getCustomers().subscribe(
-      data => this.customers = data
+      data => {
+        this.customers = data;
+      }
     );
     facilityRestService.getFacilities().subscribe(
       data => this.facilities = data

@@ -1,0 +1,176 @@
+<div class="my-3">
+  <div class="text-center">
+    <h1 class="d-3">
+      Update Transport
+    </h1>
+  </div>
+</div>
+
+<div class="container w-75 py-3">
+  <div [hidden]="!successStatus" class="alert alert-success">
+    <strong>Update Transaction Successfully</strong>
+  </div>
+  <form [formGroup]="transportForm" *ngIf="transportForm" (ngSubmit)="onSubmit()" class="row g-3">
+
+    <div class="row mb-2">
+      <label for="inputId" class="col-3 form-label">ID</label>
+      <div class="col-6">
+        <input readonly [value]="transportForm.value.id" type="text" class="form-control" id="inputId">
+      </div>
+    </div>
+    <div class="row mb-2">
+      <label for="inputType" class="col-3 form-label">Transport Type(*)</label>
+      <div class="col-6">
+        <input formControlName="type" type="text" class="form-control" id="inputType">
+        <div *ngIf="
+        !transportForm.controls.type?.valid
+        && (transportForm.controls.type?.dirty|| submitted ||transportForm.controls.type?.touched)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.type.errors.required">
+            Transport Type must be required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <label for="inputCompany" class="col-3 form-label">Company(*)</label>
+      <div class="col-6">
+        <input formControlName="company" type="text" class="form-control" id="inputCompany">
+        <div *ngIf="
+        !transportForm.controls.company?.valid
+        && (transportForm.controls.company?.dirty|| submitted ||transportForm.controls.company?.touched)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.company.errors.required">
+            Company name must be required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <label for="selectFrom" class="col-3 form-label">From(*)</label>
+      <div class="col-6">
+        <select formControlName="from" class="form-select" id="selectFrom">
+          <option *ngFor="let f of fromList" [value]="f">{{f}}</option>
+        </select>
+        <div *ngIf="
+        !transportForm.controls.from?.valid
+        && (transportForm.controls.from?.dirty|| submitted ||transportForm.controls.from?.touched)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.from.errors.required">
+            From place must be required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <label for="selectTo" class="col-3 form-label">To(*)</label>
+      <div class="col-6">
+        <select formControlName="to" class="form-select" id="selectTo">
+          <option *ngFor="let t of toList" [value]="t">{{t}}</option>
+        </select>
+        <div *ngIf="
+        !transportForm.controls.to?.valid
+        && (transportForm.controls.to?.dirty|| submitted ||transportForm.controls.to?.touched)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.to.errors.required">
+            Arrival place must be required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <label for="inputPhone" class="col-3 form-label">Phone(*)</label>
+      <div class="col-6">
+        <input formControlName="phone" type="text" class="form-control" id="inputPhone">
+        <div *ngIf="
+        !transportForm.controls.phone?.valid
+        && (transportForm.controls.phone?.dirty|| submitted ||transportForm.controls.phone?.touched)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.phone.errors.required">
+            Phone must be required
+          </div>
+          <div [hidden]="!transportForm.controls.phone.errors.pattern">
+            Phone need to start with 090 or 093 or 097 and has 10 numbers
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <label for="inputEmail" class="col-3 form-label">Email(*)</label>
+      <div class="col-6">
+        <input formControlName="email" type="email" class="form-control" id="inputEmail">
+        <div *ngIf="
+        !transportForm.controls.email?.valid
+        && (transportForm.controls.email?.dirty|| submitted ||transportForm.controls.email?.touched)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.email.errors.required">
+            Email must be required
+          </div>
+          <div [hidden]="!transportForm.controls.email.errors.email">
+            Email format is invalid
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <label for="inputStartTime" class="col-3 form-label">Start Time(*)</label>
+      <div class="col-6">
+        <input formControlName="startTime" type="time" class="form-control" id="inputStartTime">
+        <div *ngIf="
+        !transportForm.controls.startTime?.valid
+        && (transportForm.controls.startTime?.dirty|| submitted ||transportForm.controls.startTime?.touched)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.startTime.errors.required">
+            Start Time must be required
+          </div>
+          <div [hidden]="!transportForm.controls.startTime.errors.pattern">
+            Start Time must be formatted follow hh:mm
+          </div>
+          <div [hidden]="!transportForm.controls.startTime.hasError('timeInvalid')">
+            Start Time must be after 5:00 and before 23:00
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <label for="inputArrivalTime" class="col-3 form-label">Arrival Time(*)</label>
+      <div class="col-6">
+        <input formControlName="arrivalTime" type="time" class="form-control" id="inputArrivalTime">
+        <div *ngIf="
+        !transportForm.controls.arrivalTime?.valid
+        && (transportForm.controls.arrivalTime?.dirty
+        ||transportForm.controls.arrivalTime?.touched
+        || submitted)"
+             class="text-small text-danger">
+          <div [hidden]="!transportForm.controls.arrivalTime.errors.required">
+            Arrival Time must be required
+          </div>
+          <div [hidden]="!transportForm.controls.arrivalTime.errors.pattern">
+            Arrival Time must be formatted follow hh:mm
+          </div>
+          <div [hidden]="!transportForm.controls.arrivalTime.hasError('timeInvalid')">
+            Arrival Time must be after 5:00 and before 23:00
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-3"></div>
+    <div class="col-3">
+      <a class="btn btn-secondary" routerLink="/">Return List</a>
+    </div>
+    <div class="col-3">
+      <button [disabled]="!transportForm.valid" type="submit" class="btn btn-primary">Update</button>
+    </div>
+    <div class="col-3"></div>
+  </form>
+
+</div>

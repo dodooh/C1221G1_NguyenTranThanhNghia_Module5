@@ -10,6 +10,7 @@ export interface Customer {
   address: string;
   mail: string;
   customerType: CustomerType;
+  activated?: boolean;
 }
 
 
