@@ -11,6 +11,7 @@ import { TransportListComponent } from './transport/transport-list/transport-lis
 import { TransportUpdateComponent } from './transport/transport-update/transport-update.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TransportCreateComponent } from './transport/transport-create/transport-create.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TransportCreateComponent } from './transport/transport-create/transport
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

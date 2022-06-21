@@ -23,7 +23,7 @@ public interface ITransportRepository extends JpaRepository<Transport, Integer> 
     Integer deactivate(@Param("transportId") Integer transportId);
 
 
-    Page<Transport> findAllByCompanyContainingAndFromPlace_Id(String company, Integer fromPlace_id, Pageable pageable);
+    Page<Transport> findAllByCompanyContainingAndFromPlace_IdAndStatusIs(String company, Integer fromPlace_id, boolean b, Pageable pageable);
 
-    Page<Transport> findAllByCompanyContaining(String companySearch, Pageable pageable);
+    Page<Transport> findAllByCompanyContainingAndStatusIs(String companySearch, boolean b, Pageable pageable);
 }

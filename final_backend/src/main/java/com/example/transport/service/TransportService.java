@@ -27,9 +27,9 @@ public class TransportService implements ITransportService {
     @Override
     public Page<Transport> findAllByCompanyAndFromPlace(String companySearch, Integer fromPlaceIdSearch, Pageable pageable) {
         if (fromPlaceIdSearch == null) {
-            return transportRepository.findAllByCompanyContaining(companySearch, pageable);
+            return transportRepository.findAllByCompanyContainingAndStatusIs(companySearch, true, pageable);
         }
-        return transportRepository.findAllByCompanyContainingAndFromPlace_Id(companySearch, fromPlaceIdSearch, pageable);
+        return transportRepository.findAllByCompanyContainingAndFromPlace_IdAndStatusIs(companySearch, fromPlaceIdSearch, true, pageable);
     }
 
     @Override

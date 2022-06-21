@@ -31,7 +31,21 @@ export class TransportService {
     return this.httpClient.post<Transport>(`${API_URL}`, transport);
   }
 
+  getAllPaginate(page: number, companySearch: string, fromPlaceIdSearch: string): Observable<any> {
+    const URL = `${API_URL}?company=${companySearch}&fromPlace=${fromPlaceIdSearch}&page=${page}`;
+    return this.httpClient.get<any>(URL);
+  }
   getAll(companySearch: string, fromPlaceIdSearch: string): Observable<any> {
     return this.httpClient.get<any>(`${API_URL}?company=${companySearch}&fromPlace=${fromPlaceIdSearch}`);
   }
+}
+
+// tslint:disable-next-line:no-empty-interface
+interface GetResponseTransports {
+  content: Transport[];
+  size: number;
+  number: number;
+  numberOfElements: number;
+  totalElements: number;
+
 }

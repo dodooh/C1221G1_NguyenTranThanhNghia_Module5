@@ -16,6 +16,11 @@ export class TransportListComponent implements OnInit {
   companySearch = '';
   fromPlaceIdSearch = '';
   places: Place[];
+  size = 5;
+  pageNumber = 1;
+  numberOfElements: number;
+  totalElements: number;
+
   constructor(
     private route: Router,
     private transportService: TransportService,
@@ -24,12 +29,27 @@ export class TransportListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllPlaces();
-    this.getAllTransports();
+    this.getAllTransportsPagination();
   }
 
   getAllTransports() {
     this.transportService.getAll(this.companySearch, this.fromPlaceIdSearch).subscribe(
-      data => this.transports = data.content
+      data => {
+        console.log(data);
+      }
+    );
+  }
+
+  getAllTransportsPagination() {
+    console.log(this.pageNumber);
+    this.transportService.getAllPaginate(this.pageNumber - 1, this.companySearch, this.fromPlaceIdSearch).subscribe(
+      data => {
+        console.log(data);
+        this.transports = data.content;
+        this.pageNumber = data.number + 1;
+        this.numberOfElements = data.numberOfElements;
+        this.totalElements = data.totalElements;
+      }
     );
   }
 

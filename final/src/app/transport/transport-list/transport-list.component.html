@@ -29,7 +29,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngIf="transports.length == 0">
+    <tr *ngIf="!transports || transports.length == 0">
       <td colspan="10" class="text-center">Not Found Any Data</td>
     </tr>
     <tr *ngFor="let t of transports">
@@ -58,6 +58,24 @@
     </tr>
     </tbody>
   </table>
+</div>
+<div class="footer-pagination">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-9" style="padding-left: 30%;">
+          <ngb-pagination [(page)]="pageNumber"
+                          [pageSize]="size"
+                          [collectionSize]="totalElements"
+                          (pageChange)="getAllTransportsPagination()"
+          >
+
+          </ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
