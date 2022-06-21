@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TransportService} from '../../service/transport.service';
 import {Transport} from '../../model/transport.model';
 import {Router} from '@angular/router';
+import {PlaceService} from '../../service/place.service';
+import {Place} from '../../model/place.model';
 
 @Component({
   selector   : 'app-transport-list',
@@ -11,19 +13,28 @@ import {Router} from '@angular/router';
 export class TransportListComponent implements OnInit {
   transports: Transport[];
   idToDelete: number;
+  companySearch = '';
+  fromPlaceIdSearch = '';
+  places: Place[];
   constructor(
     private route: Router,
-    private transportService: TransportService) {
+    private transportService: TransportService,
+    private placeService: PlaceService) {
   }
 
   ngOnInit(): void {
-    this.transportService.getAll().subscribe(
-      data => this.transports = data
+    this.getAllPlaces();
+    this.getAllTransports();
+  }
+
+  getAllTransports() {
+    this.transportService.getAll(this.companySearch, this.fromPlaceIdSearch).subscribe(
+      data => this.transports = data.content
     );
   }
 
   setIdToDelete(t: Transport) {
-    this.idToDelete = t.id;
+    this.idToDelete = t.transportId;
   }
 
   deleteTransport() {
@@ -33,4 +44,11 @@ export class TransportListComponent implements OnInit {
       }
     );
   }
+
+  private getAllPlaces() {
+    this.placeService.getAll().subscribe(
+      data => this.places = data
+    );
+  }
+
 }

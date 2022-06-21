@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Transport} from '../model/transport.model';
-const API_URL = 'http://localhost:5000/transports';
+const API_URL = 'http://localhost:8080/api/transports';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,9 +11,9 @@ export class TransportService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll(): Observable<Transport[]> {
-    return this.httpClient.get<Transport[]>(API_URL);
-  }
+  // getAll(): Observable<any> {
+  //   return this.httpClient.get<any>(API_URL);
+  // }
 
   delete(id): Observable<any> {
     return this.httpClient.delete<any>(`${API_URL}/${id}`);
@@ -24,6 +24,14 @@ export class TransportService {
   }
 
   update(transport: Transport): Observable<Transport> {
-    return this.httpClient.put<Transport>(`${API_URL}/${transport.id}`, transport);
+    return this.httpClient.put<Transport>(`${API_URL}`, transport);
+  }
+
+  save(transport: Transport): Observable<Transport> {
+    return this.httpClient.post<Transport>(`${API_URL}`, transport);
+  }
+
+  getAll(companySearch: string, fromPlaceIdSearch: string): Observable<any> {
+    return this.httpClient.get<any>(`${API_URL}?company=${companySearch}&fromPlace=${fromPlaceIdSearch}`);
   }
 }

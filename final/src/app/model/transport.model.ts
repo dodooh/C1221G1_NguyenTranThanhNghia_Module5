@@ -1,9 +1,11 @@
+import {Place} from './place.model';
+
 export interface Transport {
-  id: number;
+  transportId: number;
   type: string;
   company: string;
-  from: string;
-  to: string;
+  fromPlace: Place;
+  toPlace: Place;
   phone: string;
   email: string;
   startTime: string;

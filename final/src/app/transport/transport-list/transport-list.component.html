@@ -2,6 +2,12 @@
   <div class="d-flex justify-content-between">
     <a class="btn btn-info" routerLink="/create">Add New</a>
     <div class="d-flex">
+      <input [(ngModel)]="companySearch" type="text" class="form-control" placeholder="Enter Company">
+      <select [(ngModel)]="fromPlaceIdSearch" class="form-select">
+        <option value="">--Choose Start Place--</option>
+        <option *ngFor="let s of places" [value]="s.id">{{s.name}}</option>
+      </select>
+      <button class="btn btn-info" type="button" (click)="getAllTransports()">Search</button>
     </div>
   </div>
 </div>
@@ -23,18 +29,21 @@
     </tr>
     </thead>
     <tbody>
+    <tr *ngIf="transports.length == 0">
+      <td colspan="10" class="text-center">Not Found Any Data</td>
+    </tr>
     <tr *ngFor="let t of transports">
-      <td>{{t.id}}</td>
+      <td>{{t.transportId}}</td>
       <td>{{t.type}}</td>
       <td>{{t.company}}</td>
-      <td>{{t.from}}</td>
-      <td>{{t.to}}</td>
+      <td>{{t.fromPlace.name}}</td>
+      <td>{{t.toPlace.name}}</td>
       <td>{{t.phone}}</td>
       <td>{{t.email}}</td>
       <td>{{t.startTime}}</td>
       <td>{{t.arrivalTime}}</td>
       <td>
-        <button type="button" [routerLink]="['/update',t.id]" class="btn btn-warning mx-1">
+        <button type="button" [routerLink]="['/update',t.transportId]" class="btn btn-warning mx-1">
           <i class='bx bx-cog bx-sx'></i>
         </button>
         <button

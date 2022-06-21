@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TransportService} from '../../service/transport.service';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {PlaceService} from '../../service/place.service';
+import {Place} from '../../model/place.model';
 
 @Component({
   selector   : 'app-transport-update',
@@ -12,25 +14,32 @@ export class TransportUpdateComponent implements OnInit {
   transportForm: FormGroup;
   successStatus = false;
   submitted = false;
-fromList = ['Đà Nẵng', 'Huế', 'Quảng Nam', 'Quảng Ngãi', 'Bình Định'];
-  toList = ['Quảng Trị', 'Quảng Bình', 'Hà Nội', 'Thanh Hóa', 'Nha Trang'];
+  places: Place[];
+  compareById(itemOne, itemTwo) {
+    return itemOne && itemTwo && itemOne.id === itemTwo.id;
+  }
   constructor(
     private route: Router,
     private transportService: TransportService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private placeService: PlaceService) {
 
   }
 
   ngOnInit(): void {
+    this.placeService.getAll().subscribe(
+      data => this.places = data
+    );
     const idFromRoute = this.activatedRoute.snapshot.paramMap.get('id');
     this.transportService.findById(idFromRoute).subscribe(
       data => {
+        console.log(data);
         this.transportForm = new FormGroup({
-          id         : new FormControl(data.id),
+          transportId: new FormControl(data.transportId),
           type       : new FormControl(data.type, [Validators.required]),
           company    : new FormControl(data.company, [Validators.required]),
-          from       : new FormControl(data.from, [Validators.required]),
-          to         : new FormControl(data.to, [Validators.required]),
+          fromPlace  : new FormControl(data.fromPlace, [Validators.required]),
+          toPlace    : new FormControl(data.toPlace, [Validators.required]),
           phone      : new FormControl(data.phone,
             [Validators.required, Validators.pattern(/^09[037]\d{7}$/)]),
           email      : new FormControl(data.email,
