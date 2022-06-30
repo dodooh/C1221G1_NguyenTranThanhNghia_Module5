@@ -1,0 +1,9 @@
+.chat-app-right-side {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  background-color: #f2f4f5;
+  bottom: 0;
+  height: 100vh
+}

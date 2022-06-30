@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyAyMrBGwsFyKO3vaKNu_U9LtdJbGiFP2gA',
+    databaseURL: 'firebase-adminsdk-nwgz3@fir-chat-9b119.iam.gserviceaccount.com'
+  },
+  adminChat: {
+    nickname: 'ADMIN',
+    uuid: 'ADMIN-C12'
+  }
 };
 
 /*

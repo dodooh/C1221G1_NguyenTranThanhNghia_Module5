@@ -1,0 +1,108 @@
+.chatbox-top {
+  position: relative;
+  display: flex;
+  padding: 10px 0;
+  background: #5dac46;
+  height: 64px
+}
+.chat-partner-name {
+  flex: 1;
+  padding: 0 0 0 20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
+.chat-partner-name a, .chat-partner-name a:link, .chat-partner-name a:visited {
+  text-decoration: none;
+  color: white;
+}
+.chat-messages {
+  border-top: 1px solid rgba(0, 0, 0, .05);
+  padding: 16px;
+  overflow-y: scroll;
+  height: 600px;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  flex: 1;
+}
+.message-box-holder {
+  width: 100%;
+  margin: 0 0 15px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+}
+.message-sender {
+  font-size: 16px;
+  margin: 0 0 15px;
+  color: #30649c;
+  align-self: flex-start;
+}
+.message-sender a, .message-sender a:link, .message-sender a:visited {
+  color: #30649c;
+  text-decoration: none;
+}
+.message-box {
+  padding: 6px 10px;
+  border-radius: 6px;
+  position: relative;
+  background: rgba(40, 167, 69, 1);
+  border: 2px solid rgba(100, 170, 0, .1);
+  color: white;
+  font-size: 16px;
+}
+.message-box:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+  border-top: 10px solid rgba(40, 167, 69, 1);
+  border-right: none;
+  bottom: -22px;
+  right: 10px;
+}
+.message-partner {
+  background: #007bff;
+  border: 2px solid rgba(0, 114, 135, .1);
+  align-self: flex-start;
+}
+.message-partner:after {
+  right: auto;
+  bottom: auto;
+  top: -22px;
+  left: 9px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #007bff;
+  border-left: none;
+}
+.chat-input-holder {
+  display: flex;
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}
+.chat-input {
+  resize: none;
+  padding: 5px 10px;
+  height: 64px;
+  font-size: 16px;
+  color: #000000;
+  flex: 1;
+  border: none;
+  background: rgba(0, 0, 0, .05);
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+.chat-input:focus, .message-send:focus {
+  outline: none;
+}
+.message-send::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.message-send {
+  -webkit-appearance: none;
+  background: rgba(40, 167, 69, 1);
+  color: white;
+  font-size: 16px;
+  padding: 0 15px;
+  border: none;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,25 @@
+
+<div class="chat-messages" #chatcontent [scrollTop]="scrolltop">
+  <div class="message-box-holder"
+       *ngFor="let chat of chats"
+  >
+    <div class="message-box" *ngIf="chat.nickname === 'ADMIN'; else clientChat">
+      {{chat.message}}
+    </div>
+    <ng-template #clientChat>
+      <div class="message-sender">
+        <strong>{{chat.nickname}}</strong> - <small>{{chat.date | date: 'shortTime'}}</small>
+      </div>
+      <div class="message-box message-partner">
+        {{chat.message}}
+      </div>
+    </ng-template>
+  </div>
+
+</div>
+<div class="chat-input-holder">
+  <form [formGroup]="chatForm" (ngSubmit)="onFormSubmit()" class="w-100 row">
+    <input formControlName="message" class="chat-input" placeholder="Chat with supporter"/>
+    <input type="submit" value="Send" class="message-send"/>
+  </form>
+</div>
